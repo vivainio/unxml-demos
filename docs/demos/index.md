@@ -29,6 +29,10 @@ The **Original** and **Rendered** columns compare the source XML against the `un
 
 | Document | Original | Rendered | Source |
 | --- | --- | --- | --- |
+| [CD catalog → HTML table](xslt/intro/cd-catalog.html) | 21 lines · 567 B | 15 lines · 427 B | [source](https://www.w3schools.com/xml/cdcatalog.xsl) |
+| [CD catalog with choose/when](xslt/intro/cd-catalog-choose.html) | 31 lines · 749 B | 20 lines · 532 B | [source](https://www.w3schools.com/xml/cdcatalog_choose.xsl) |
+| [CD catalog with named templates](xslt/intro/cd-catalog-templates.html) | 33 lines · 678 B | 18 lines · 349 B | [source](https://www.w3schools.com/xml/cdcatalog_apply.xsl) |
+| [Breakfast menu (literal result)](xslt/intro/breakfast-menu.html) | 17 lines · 729 B | 12 lines · 519 B | [source](https://www.w3schools.com/xml/simple.xsl) |
 | [DocBook XSL — HTML driver](xslt/docbook/html-driver.html) | 558 lines · 20.0 KB | 338 lines · 10.2 KB | [source](https://cdn.docbook.org/release/xsl/current/html/docbook.xsl) |
 | [DocBook XSL — inline elements](xslt/docbook/inline.html) | 1,598 lines · 49.8 KB | 826 lines · 21.4 KB | [source](https://cdn.docbook.org/release/xsl/current/html/inline.xsl) |
 | [ISO Schematron — SVRL skeleton](xslt/schematron/iso-svrl.html) | 614 lines · 21.1 KB | 266 lines · 6.6 KB | [source](https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_svrl_for_xslt1.xsl) |
