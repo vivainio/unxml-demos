@@ -1,0 +1,8 @@
+/* The default Material/Zensical content column (.md-grid, 61rem ≈ 976px) is too
+   narrow for the gallery: the side-by-side source/output panes and the wide
+   original-vs-rendered comparison tables get cramped. Widen only the pages that
+   actually carry those demos (matched via :has() on the inline-demo wrapper), so
+   prose pages keep their comfortable reading measure. */
+.md-grid:has(.unxml-demo) {
+  max-width: min(90rem, 96vw);
+}

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Gallery
 
 Real-world XML documents rendered with [`unxml`](https://github.com/vivainio/unxml-rs), syntax-highlighted with the same grammar `unxml` ships for `bat`.
