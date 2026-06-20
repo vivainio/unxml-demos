@@ -1,173 +1,51 @@
 ---
-icon: lucide/rocket
+icon: lucide/home
 ---
 
-# Get started
+# unxml demos
 
-For full documentation visit [zensical.org](https://zensical.org/docs/).
+[`unxml`](https://github.com/vivainio/unxml-rs) turns verbose XML — schemas,
+stylesheets, and rule sets — into a compact, indentation-based pseudocode that
+is far easier to read, diff, and review than the angle-bracket original.
 
-## Commands
+This site is a gallery of **real-world documents** rendered with `unxml`, so you
+can judge the output on files you might actually have to read: UBL and Finvoice
+schemas, DocBook XSL stylesheets, and EN16931 e-invoicing Schematron rules. Each
+page is the full output, syntax-highlighted with the same grammar `unxml` ships
+for [`bat`](https://github.com/sharkdp/bat).
 
-* [`zensical new`][new] - Create a new project
-* [`zensical serve`][serve] - Start local web server
-* [`zensical build`][build] - Build your site
+[Browse the gallery :material-arrow-right:](demos/index.md){ .md-button .md-button--primary }
 
-  [new]: https://zensical.org/docs/usage/new/
-  [serve]: https://zensical.org/docs/usage/preview/
-  [build]: https://zensical.org/docs/usage/build/
+## What unxml does
 
-## Examples
+`unxml` has a plain mode for any XML document, plus dedicated modes that rewrite
+a specific vocabulary into idiomatic pseudocode. A few examples:
 
-### Admonitions
+| Source | Rendered |
+| --- | --- |
+| `<xs:element name="Order" type="OrderType"/>` | `element Order : OrderType` |
+| `<xsl:value-of select="$total"/>` | `<- $total` |
+| `<assert test="cbc:EndpointID">…</assert>` | `assert cbc:EndpointID` |
 
-> Go to [documentation](https://zensical.org/docs/authoring/admonitions/)
+The result is dramatically shorter — the gallery lists original vs rendered line
+and byte counts for every demo (UBL's Common Aggregate Components, for instance,
+drops from ~40,000 lines to ~5,400).
 
-!!! note
+Each mode is documented with side-by-side samples:
 
-    This is a **note** admonition. Use it to provide helpful information.
+- [XSD transformations](https://github.com/vivainio/unxml-rs/blob/main/docs/xsd.md) — `xs:*` / `xsd:*` schemas
+- [XSLT transformations](https://github.com/vivainio/unxml-rs/blob/main/docs/xslt.md) — `xsl:*` stylesheets
+- [Schematron transformations](https://github.com/vivainio/unxml-rs/blob/main/docs/schematron.md) — `.sch` rule schemas
 
-!!! warning
+## Get unxml
 
-    This is a **warning** admonition. Be careful!
+`unxml` is an open-source command-line tool written in Rust. Point it at any
+XML, XSD, XSLT, or Schematron file:
 
-### Details
-
-> Go to [documentation](https://zensical.org/docs/authoring/admonitions/#collapsible-blocks)
-
-??? info "Click to expand for more info"
-
-    This content is hidden until you click to expand it.
-    Great for FAQs or long explanations.
-
-## Code Blocks
-
-> Go to [documentation](https://zensical.org/docs/authoring/code-blocks/)
-
-``` python hl_lines="2" title="Code blocks"
-def greet(name):
-    print(f"Hello, {name}!") # (1)!
-
-greet("Python")
+``` bash
+# pick the mode automatically from the file extension
+unxml --auto some-file.xsd
 ```
 
-1.  > Go to [documentation](https://zensical.org/docs/authoring/code-blocks/#code-annotations)
-
-    Code annotations allow to attach notes to lines of code.
-
-Code can also be highlighted inline: `#!python print("Hello, Python!")`.
-
-## Content tabs
-
-> Go to [documentation](https://zensical.org/docs/authoring/content-tabs/)
-
-=== "Python"
-
-    ``` python
-    print("Hello from Python!")
-    ```
-
-=== "Rust"
-
-    ``` rs
-    println!("Hello from Rust!");
-    ```
-
-## Diagrams
-
-> Go to [documentation](https://zensical.org/docs/authoring/diagrams/)
-
-``` mermaid
-graph LR
-  A[Start] --> B{Error?};
-  B -->|Yes| C[Hmm...];
-  C --> D[Debug];
-  D --> B;
-  B ---->|No| E[Yay!];
-```
-
-## Footnotes
-
-> Go to [documentation](https://zensical.org/docs/authoring/footnotes/)
-
-Here's a sentence with a footnote.[^1]
-
-Hover it, to see a tooltip.
-
-[^1]: This is the footnote.
-
-
-## Formatting
-
-> Go to [documentation](https://zensical.org/docs/authoring/formatting/)
-
-- ==This was marked (highlight)==
-- ^^This was inserted (underline)^^
-- ~~This was deleted (strikethrough)~~
-- H~2~O
-- A^T^A
-- ++ctrl+alt+del++
-
-## Icons, Emojis
-
-> Go to [documentation](https://zensical.org/docs/authoring/icons-emojis/)
-
-* :sparkles: `:sparkles:`
-* :rocket: `:rocket:`
-* :tada: `:tada:`
-* :memo: `:memo:`
-* :eyes: `:eyes:`
-
-## Maths
-
-> Go to [documentation](https://zensical.org/docs/authoring/math/)
-
-$$
-\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}
-$$
-
-!!! warning "Needs configuration"
-    Note that MathJax is included via a `script` tag on this page and is not
-    configured in the generated default configuration to avoid including it
-    in a pages that do not need it. See the documentation for details on how
-    to configure it on all your pages if they are more Maths-heavy than these
-    simple starter pages.
-
-<script id="MathJax-script" src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [["\\(", "\\)"]],
-      displayMath: [["\\[", "\\]"]],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      ignoreHtmlClass: ".*|",
-      processHtmlClass: "arithmatex"
-    }
-  };
-
-  document$.subscribe(() => {
-    MathJax.startup.output.clearCache()
-    MathJax.typesetClear()
-    MathJax.texReset()
-    MathJax.typesetPromise()
-  })
-</script>
-
-## Task Lists
-
-> Go to [documentation](https://zensical.org/docs/authoring/lists/#using-task-lists)
-
-* [x] Install Zensical
-* [x] Configure `zensical.toml`
-* [x] Write amazing documentation
-* [ ] Deploy anywhere
-
-## Tooltips
-
-> Go to [documentation](https://zensical.org/docs/authoring/tooltips/)
-
-[Hover me][example]
-
-  [example]: https://example.com "I'm a tooltip!"
+See the [project README](https://github.com/vivainio/unxml-rs) for installation
+(cargo, uv, or prebuilt binaries) and the full usage guide.
