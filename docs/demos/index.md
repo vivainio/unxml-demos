@@ -4,6 +4,14 @@ Real-world XML documents rendered with [`unxml`](https://github.com/vivainio/unx
 
 The **Original** and **Rendered** columns compare the source XML against the `unxml` output (lines · bytes), so you can see how much the rendering compresses each document.
 
+## XML documents
+
+| Document | Original | Rendered | Source |
+| --- | --- | --- | --- |
+| [UBL — Invoice (instance)](xml/ubl/invoice-example.html) | 493 lines · 19.2 KB | 353 lines · 12.1 KB | [source](https://docs.oasis-open.org/ubl/os-UBL-2.1/xml/UBL-Invoice-2.1-Example.xml) |
+| [UBL — Order (instance)](xml/ubl/order-example.html) | 341 lines · 13.6 KB | 250 lines · 7.5 KB | [source](https://docs.oasis-open.org/ubl/os-UBL-2.1/xml/UBL-Order-2.1-Example.xml) |
+| [UBL — Credit Note (instance)](xml/ubl/creditnote-example.html) | 431 lines · 17.0 KB | 308 lines · 10.8 KB | [source](https://docs.oasis-open.org/ubl/os-UBL-2.1/xml/UBL-CreditNote-2.1-Example.xml) |
+
 ## Schemas
 
 | Document | Original | Rendered | Source |
