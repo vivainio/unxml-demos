@@ -8,56 +8,56 @@
 </head>
 <body>
 <a class="unxml-back" href="../../">← all demos</a>
-<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-249038114">schema</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2 </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">elementFormDefault</span><span class="ansi38-249038114">=</span><span class="ansi38-190132255">qualified</span><span class="ansi38-248248242">)</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">xmlns</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> cbc </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> udt </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">import</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2 </span><span class="ansi38-249038114">from</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">UBL-UnqualifiedDataTypes-2.1.xsd</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">import</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2 </span><span class="ansi38-249038114">from</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">UBL-CommonBasicComponents-2.1.xsd</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">include</span><span class="ansi38-248248242"> UBL-ExtensionContentDataType-2.1.xsd</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> UBLExtensions </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">UBLExtensionsType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> UBLExtensionsType</span>
-<span class="ansi38-117113094">    // A container for all extensions present in the document.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">UBLExtension</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">+</span>
-<span class="ansi38-117113094">      // A single extension for private use.</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> UBLExtension </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">UBLExtensionType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> UBLExtensionType</span>
-<span class="ansi38-117113094">    // A single extension for private use.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:ID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // An identifier for the Extension assigned by the creator of the extension.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:Name</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // A name for the Extension assigned by the creator of the extension.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionAgencyID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // An agency that maintains one or more Extensions.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionAgencyName</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // The name of the agency that maintains the Extension.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionVersionID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // The version of the Extension.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionAgencyURI</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // A URI for the Agency that maintains the Extension.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionURI</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // A URI for the Extension.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionReasonCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // A code for reason the Extension is being included.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionReason</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
-<span class="ansi38-117113094">      // A description of the reason for the Extension.</span>
-<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionContent</span>
-<span class="ansi38-117113094">      // The definition of the extension content.</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionAgencyID </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionAgencyIDType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionAgencyName </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionAgencyNameType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionAgencyURI </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionAgencyURIType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionContent </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionContentType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionReason </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionReasonType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionReasonCode </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionReasonCodeType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionURI </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionURIType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> ExtensionVersionID </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ExtensionVersionIDType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> ExtensionAgencyIDType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">udt:IdentifierType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> ExtensionAgencyNameType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">udt:TextType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> ExtensionAgencyURIType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">udt:IdentifierType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> ExtensionReasonType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">udt:TextType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> ExtensionReasonCodeType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">udt:CodeType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> ExtensionURIType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">udt:IdentifierType</span>
-<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> ExtensionVersionIDType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">udt:IdentifierType</span>
+<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-203">schema</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2 </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">xmlns</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> cbc </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> udt </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">import</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2 </span><span class="ansi38-203">from</span><span class="ansi38-231"> </span><span class="ansi38-81">UBL-UnqualifiedDataTypes-2.1.xsd</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">import</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2 </span><span class="ansi38-203">from</span><span class="ansi38-231"> </span><span class="ansi38-81">UBL-CommonBasicComponents-2.1.xsd</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">include</span><span class="ansi38-231"> UBL-ExtensionContentDataType-2.1.xsd</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> UBLExtensions </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">UBLExtensionsType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> UBLExtensionsType</span>
+<span class="ansi38-242">    // A container for all extensions present in the document.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">UBLExtension</span><span class="ansi38-231"> </span><span class="ansi38-203">+</span>
+<span class="ansi38-242">      // A single extension for private use.</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> UBLExtension </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">UBLExtensionType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> UBLExtensionType</span>
+<span class="ansi38-242">    // A single extension for private use.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">cbc:ID</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // An identifier for the Extension assigned by the creator of the extension.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">cbc:Name</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // A name for the Extension assigned by the creator of the extension.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyID</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // An agency that maintains one or more Extensions.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyName</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // The name of the agency that maintains the Extension.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionVersionID</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // The version of the Extension.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyURI</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // A URI for the Agency that maintains the Extension.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionURI</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // A URI for the Extension.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReasonCode</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // A code for reason the Extension is being included.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReason</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
+<span class="ansi38-242">      // A description of the reason for the Extension.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionContent</span>
+<span class="ansi38-242">      // The definition of the extension content.</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionAgencyID </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyIDType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionAgencyName </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyNameType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionAgencyURI </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyURIType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionContent </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionContentType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionReason </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReasonType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionReasonCode </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReasonCodeType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionURI </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionURIType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionVersionID </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionVersionIDType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionAgencyIDType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionAgencyNameType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:TextType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionAgencyURIType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionReasonType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:TextType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionReasonCodeType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:CodeType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionURIType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionVersionIDType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
 </span></pre>
 </body>
 </html>
