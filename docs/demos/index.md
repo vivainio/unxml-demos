@@ -1242,7 +1242,7 @@ The **basics** below are shown inline — original source on the left, `unxml` o
 </div></div>
 <div class="unxml-sample">
 <h3>Named templates + apply-templates</h3>
-<p class="unxml-cap"><a href="https://github.com/vivainio/unxml-demos/blob/main/examples/xslt/cdcatalog-templates.xsl">cdcatalog-templates.xsl</a> · 33 → 18 lines</p>
+<p class="unxml-cap"><a href="https://github.com/vivainio/unxml-demos/blob/main/examples/xslt/cdcatalog-templates.xsl">cdcatalog-templates.xsl</a> · 33 → 20 lines</p>
 <div class="unxml-cols">
 <div class="unxml-col"><div class="unxml-col-label">XSLT source</div><pre class="unxml"><span class="ansi2html-content"><span class="ansi38-255255255">&lt;?</span><span class="ansi38-249038114">xml</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">version</span><span class="ansi38-248248242">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">1.0</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">encoding</span><span class="ansi38-248248242">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">UTF-8</span><span class="ansi38-230219116">"</span><span class="ansi38-255255255">?&gt;</span>
 <span class="ansi38-255255255">&lt;</span><span class="ansi38-249038114">xsl</span><span class="ansi38-249038114">:</span><span class="ansi38-249038114">stylesheet</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">version</span><span class="ansi38-248248242">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">1.0</span><span class="ansi38-230219116">"</span>
@@ -1283,10 +1283,12 @@ The **basics** below are shown inline — original source on the left, `unxml` o
 <span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> title</span>
 <span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> artist</span>
 <span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> title</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">Title:</span><span class="ansi38-230219116">"</span>
 <span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">style</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">color:#ff0000</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
 <span class="ansi38-248248242">      </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> .</span>
 <span class="ansi38-248248242">    </span><span class="ansi38-249038114">br</span>
 <span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> artist</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">Artist:</span><span class="ansi38-230219116">"</span>
 <span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">style</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">color:#00ff00</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
 <span class="ansi38-248248242">      </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> .</span>
 <span class="ansi38-248248242">    </span><span class="ansi38-249038114">br</span></span></pre></div>
@@ -1350,7 +1352,7 @@ The **basics** below are shown inline — original source on the left, `unxml` o
 | Document | Original | Rendered | Source |
 | --- | --- | --- | --- |
 | [DocBook XSL — HTML driver](xslt/docbook/html-driver.html) | 558 lines · 20.0 KB | 338 lines · 10.2 KB | [source](https://cdn.docbook.org/release/xsl/current/html/docbook.xsl) |
-| [DocBook XSL — inline elements](xslt/docbook/inline.html) | 1,598 lines · 49.8 KB | 826 lines · 21.4 KB | [source](https://cdn.docbook.org/release/xsl/current/html/inline.xsl) |
+| [DocBook XSL — inline elements](xslt/docbook/inline.html) | 1,598 lines · 49.8 KB | 837 lines · 21.6 KB | [source](https://cdn.docbook.org/release/xsl/current/html/inline.xsl) |
 | [ISO Schematron — SVRL skeleton](xslt/schematron/iso-svrl.html) | 614 lines · 21.1 KB | 266 lines · 6.6 KB | [source](https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_svrl_for_xslt1.xsl) |
 
 ## Schematron
