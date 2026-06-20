@@ -1,0 +1,89 @@
+# UBL — Core Component Types
+
+Source: [`cct.xsd.unxml`](https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/CCTS_CCT_SchemaModule-2.1.xsd) — 83 lines of `unxml --xsd` output.
+
+<pre class="unxml-demo" markdown="0"><span class="ansi2html-content">
+<span class="ansi38-249038114">schema</span><span class="ansi38-248248242"> urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2 </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">elementFormDefault</span><span class="ansi38-249038114">=</span><span class="ansi38-190132255">qualified</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> cct </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> ccts </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:un:unece:uncefact:documentation:2</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> AmountType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:decimal</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@currencyID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The currency of the amount.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@currencyCodeListVersionID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The VersionID of the UN/ECE Rec9 code list.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> BinaryObjectType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:base64Binary</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@format</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The format of the binary content.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@mimeCode</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The mime type of the binary object.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@encodingCode</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // Specifies the decoding algorithm of the binary object.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@characterSetCode</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The character set of the binary object if the mime type is text.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@uri</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:anyURI</span>
+<span class="ansi38-117113094">      // The Uniform Resource Identifier that identifies where the binary object is located.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@filename</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The filename of the binary object.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> CodeType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@listID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The identification of a list of codes.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@listAgencyID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // An agency that maintains one or more lists of codes.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@listAgencyName</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The name of the agency that maintains the list of codes.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@listName</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The name of a list of codes.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@listVersionID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The version of the list of codes.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@name</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The textual equivalent of the code content component.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@languageID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:language</span>
+<span class="ansi38-117113094">      // The identifier of the language used in the code name.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@listURI</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:anyURI</span>
+<span class="ansi38-117113094">      // The Uniform Resource Identifier that identifies where the code list is located.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@listSchemeURI</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:anyURI</span>
+<span class="ansi38-117113094">      // The Uniform Resource Identifier that identifies where the code list scheme is located.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> DateTimeType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@format</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The format of the date time content</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> IdentifierType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@schemeID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The identification of the identification scheme.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@schemeName</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The name of the identification scheme.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@schemeAgencyID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The identification of the agency that maintains the identification scheme.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@schemeAgencyName</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The name of the agency that maintains the identification scheme.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@schemeVersionID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The version of the identification scheme.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@schemeDataURI</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:anyURI</span>
+<span class="ansi38-117113094">      // The Uniform Resource Identifier that identifies where the identification scheme data is located.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@schemeURI</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:anyURI</span>
+<span class="ansi38-117113094">      // The Uniform Resource Identifier that identifies where the identification scheme is located.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> IndicatorType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@format</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // Whether the indicator is numeric, textual or binary.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> MeasureType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:decimal</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@unitCode</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The type of unit of measure.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@unitCodeListVersionID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The version of the measure unit code list.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> NumericType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:decimal</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@format</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // Whether the number is an integer, decimal, real number or percentage.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> QuantityType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:decimal</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@unitCode</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The unit of the quantity</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@unitCodeListID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The quantity unit code list.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@unitCodeListAgencyID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The identification of the agency that maintains the quantity unit code list</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@unitCodeListAgencyName</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-117113094">      // The name of the agency which maintains the quantity unit code list.</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> TextType </span><span class="ansi38-249038114">extends</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:string</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@languageID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:language</span>
+<span class="ansi38-117113094">      // The identifier of the language used in the content component.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-253151031">@languageLocaleID</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">xsd:normalizedString</span>
+<span class="ansi38-117113094">      // The identification of the locale of the language.</span>
+</span></pre>

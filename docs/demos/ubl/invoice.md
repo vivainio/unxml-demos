@@ -1,0 +1,126 @@
+# UBL — Invoice
+
+Source: [`invoice.xsd.unxml`](https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd) — 120 lines of `unxml --xsd` output.
+
+<pre class="unxml-demo" markdown="0"><span class="ansi2html-content">
+<span class="ansi38-249038114">schema</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">elementFormDefault</span><span class="ansi38-249038114">=</span><span class="ansi38-190132255">qualified</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">xmlns</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> cac </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> cbc </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> ccts </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:un:unece:uncefact:documentation:2</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">ns</span><span class="ansi38-248248242"> ext </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">import</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2 from ../common/UBL-CommonAggregateComponents-2.1.xsd</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">import</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2 from ../common/UBL-CommonBasicComponents-2.1.xsd</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">import</span><span class="ansi38-248248242"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2 from ../common/UBL-CommonExtensionComponents-2.1.xsd</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> Invoice </span><span class="ansi38-248248242">:</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">InvoiceType</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">type</span><span class="ansi38-248248242"> InvoiceType</span>
+<span class="ansi38-117113094">    // A document used to request payment.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">ext:UBLExtensions</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A container for all extensions present in the document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:UBLVersionID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:CustomizationID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // Identifies a user-defined customization of UBL for a specific use.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:ProfileID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // Identifies a user-defined profile of the customization of UBL being used.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:ProfileExecutionID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // Identifies an instance of executing a profile, to associate all transactions in a collaboration.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:ID</span>
+<span class="ansi38-117113094">      // An identifier for this document, assigned by the sender.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:CopyIndicator</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // Indicates whether this document is a copy (true) or not (false).</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:UUID</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A universally unique identifier for an instance of this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:IssueDate</span>
+<span class="ansi38-117113094">      // The date, assigned by the sender, on which this document was issued.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:IssueTime</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The time, assigned by the sender, at which this document was issued.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:DueDate</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The date on which Invoice is due.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:InvoiceTypeCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A code signifying the type of the Invoice.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:Note</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // Free-form text pertinent to this document, conveying information that is not contained explicitly in other structures.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:TaxPointDate</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The date of the Invoice, used to indicate the point at which tax becomes applicable.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:DocumentCurrencyCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A code signifying the default currency for this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:TaxCurrencyCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A code signifying the currency used for tax amounts in the Invoice.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:PricingCurrencyCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A code signifying the currency used for prices in the Invoice.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:PaymentCurrencyCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A code signifying the currency used for payment in the Invoice.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:PaymentAlternativeCurrencyCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A code signifying the alternative currency used for payment in the Invoice.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:AccountingCostCode</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The buyer's accounting code, applied to the Invoice as a whole.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:AccountingCost</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The buyer's accounting code, applied to the Invoice as a whole, expressed as text.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:LineCountNumeric</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The number of lines in the document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cbc:BuyerReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A reference provided by the buyer used for internal routing of the document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:InvoicePeriod</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A period to which the Invoice applies.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:OrderReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A reference to the Order with which this Invoice is associated.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:BillingReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A reference to a billing document associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:DespatchDocumentReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A reference to a Despatch Advice associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:ReceiptDocumentReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A reference to a Receipt Advice associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:StatementDocumentReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A reference to a Statement associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:OriginatorDocumentReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A reference to an originator document associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:ContractDocumentReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A reference to a contract associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:AdditionalDocumentReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A reference to an additional document associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:ProjectReference</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // Information about a project.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:Signature</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A signature applied to this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:AccountingSupplierParty</span>
+<span class="ansi38-117113094">      // The accounting supplier party.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:AccountingCustomerParty</span>
+<span class="ansi38-117113094">      // The accounting customer party.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:PayeeParty</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The payee.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:BuyerCustomerParty</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The buyer.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:SellerSupplierParty</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The seller.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:TaxRepresentativeParty</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The tax representative.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:Delivery</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A delivery associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:DeliveryTerms</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // A set of delivery terms associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:PaymentMeans</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // Expected means of payment.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:PaymentTerms</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A set of payment terms associated with this document.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:PrepaidPayment</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A prepaid payment.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:AllowanceCharge</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // A discount or charge that applies to a price component.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:TaxExchangeRate</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The exchange rate between the document currency and the tax currency.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:PricingExchangeRate</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The exchange rate between the document currency and the pricing currency.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:PaymentExchangeRate</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The exchange rate between the document currency and the payment currency.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:PaymentAlternativeExchangeRate</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">?</span>
+<span class="ansi38-117113094">      // The exchange rate between the document currency and the payment alternative currency.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:TaxTotal</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // The total amount of a specific type of tax.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:WithholdingTaxTotal</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-117113094">      // The total withholding tax.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:LegalMonetaryTotal</span>
+<span class="ansi38-117113094">      // The total amount payable on the Invoice, including Allowances, Charges, and Taxes.</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">ref</span><span class="ansi38-248248242"> </span><span class="ansi38-102217239">cac:InvoiceLine</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">+</span>
+<span class="ansi38-117113094">      // A line describing an invoice item.</span>
+</span></pre>
