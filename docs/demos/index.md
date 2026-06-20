@@ -1587,7 +1587,7 @@ The **basics** below are shown inline — original source on the left, `unxml` o
 | --- | --- | --- | --- |
 | [DocBook XSL — HTML driver](xslt/docbook/html-driver.html) | 558 lines · 20.0 KB | 317 lines · 10.0 KB | [source](https://cdn.docbook.org/release/xsl/current/html/docbook.xsl) |
 | [DocBook XSL — inline elements](xslt/docbook/inline.html) | 1,598 lines · 49.8 KB | 919 lines · 23.5 KB | [source](https://cdn.docbook.org/release/xsl/current/html/inline.xsl) |
-| [DocBook xslTNG 3.0 — function library](xslt/docbook/xsltng-functions.html) | 863 lines · 30.6 KB | 474 lines · 18.9 KB | [source](https://raw.githubusercontent.com/docbook/xslTNG/main/src/main/xslt/modules/functions.xsl) |
+| [DocBook xslTNG 3.0 — function library](xslt/docbook/xsltng-functions.html) | 863 lines · 30.6 KB | 474 lines · 18.8 KB | [source](https://raw.githubusercontent.com/docbook/xslTNG/main/src/main/xslt/modules/functions.xsl) |
 | [DocBook xslTNG 3.0 — variables & maps](xslt/docbook/xsltng-variable.html) | 428 lines · 20.5 KB | 282 lines · 15.1 KB | [source](https://raw.githubusercontent.com/docbook/xslTNG/main/src/main/xslt/modules/variable.xsl) |
 | [DocBook xslTNG 3.0 — localization (try/catch, iterate)](xslt/docbook/xsltng-l10n.html) | 273 lines · 10.2 KB | 140 lines · 5.3 KB | [source](https://raw.githubusercontent.com/docbook/xslTNG/main/src/main/xslt/modules/l10n.xsl) |
 | [DocBook xslTNG 3.0 — profiling transform](xslt/docbook/xsltng-profile.html) | 298 lines · 12.2 KB | 174 lines · 7.9 KB | [source](https://raw.githubusercontent.com/docbook/xslTNG/main/src/main/xslt/transforms/40-profile.xsl) |
