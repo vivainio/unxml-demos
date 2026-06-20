@@ -19,7 +19,8 @@
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">key</span><span class="ansi38-231">(</span><span class="ansi38-149">match</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">d:glossentry</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">glossentries</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">use</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">normalize-space(d:glossterm/@baseform)</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> node </span><span class="ansi38-203">:=</span><span class="ansi38-231"> .</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> linkend </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $node/</span><span class="ansi38-208">@linkend</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> xhref </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $node/</span><span class="ansi38-208">@xlink:href</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> ($</span><span class="ansi38-208">linkend</span><span class="ansi38-231"> </span><span class="ansi38-203">or</span><span class="ansi38-231"> $</span><span class="ansi38-208">xhref</span><span class="ansi38-231">) </span><span class="ansi38-203">and</span><span class="ansi38-231"> $</span><span class="ansi38-208">node</span><span class="ansi38-231">/</span><span class="ansi38-208">ancestor::</span><span class="ansi38-203">*</span><span class="ansi38-231">[</span><span class="ansi38-208">@xlink:href</span><span class="ansi38-231"> </span><span class="ansi38-203">or</span><span class="ansi38-231"> </span><span class="ansi38-208">@linkend</span><span class="ansi38-231">]</span><span class="ansi38-231">:</span>
@@ -138,9 +139,13 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $link</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.charseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> wrapper-name</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> wrapper-name </span><span class="ansi38-203">:=</span><span class="ansi38-231"> span</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">element</span><span class="ansi38-231"> {$wrapper-name}</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> common.html.attributes</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
@@ -148,16 +153,24 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.monoseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">code</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.boldseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
@@ -172,16 +185,24 @@
 <span class="ansi38-231">            </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.italicseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">em</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> common.html.attributes</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.boldmonoseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-149">local-name</span><span class="ansi38-231">(..) </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'title'</span>
 <span class="ansi38-231">                    </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-141">local-name</span><span class="ansi38-231">(</span><span class="ansi38-141">..</span><span class="ansi38-231">/</span><span class="ansi38-141">..</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 'figure'</span>
@@ -203,8 +224,12 @@
 <span class="ansi38-231">            </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.italicmonoseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">em</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> common.html.attributes</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
@@ -214,8 +239,12 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.superscriptseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">sup</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> generate.html.title</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
@@ -223,8 +252,12 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> inline.subscriptseq</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">sub</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> generate.html.title</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
@@ -232,22 +265,37 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:author</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> person.name</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> common.html.attributes</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:editor</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> person.name</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> common.html.attributes</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:othercredit</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> person.name</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> common.html.attributes</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
@@ -509,8 +557,7 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:firstterm</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> glossterm</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">firstterm</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> 1</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:glossterm</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> firstterm </span><span class="ansi38-203">:=</span><span class="ansi38-231"> 0</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:glossterm</span><span class="ansi38-231">(</span><span class="ansi38-141">firstterm</span><span class="ansi38-231"> </span><span class="ansi38-149">:</span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
@@ -617,7 +664,12 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:sgmltag</span><span class="ansi38-203">|</span><span class="ansi38-231">d:tag</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> format.sgmltag</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> format.sgmltag</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> class</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> class </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-208">@class:</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> </span><span class="ansi38-208">@class</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">          </span><span class="ansi38-186">"</span><span class="ansi38-186">element</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">class</span><span class="ansi38-203">=</span><span class="ansi38-186">'attribute'</span><span class="ansi38-231">:</span>
@@ -801,43 +853,73 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:honorific</span><span class="ansi38-203">|</span><span class="ansi38-231">d:firstname</span><span class="ansi38-203">|</span><span class="ansi38-231">d:givenname</span><span class="ansi38-203">|</span><span class="ansi38-231">d:surname</span><span class="ansi38-203">|</span><span class="ansi38-231">d:lineage</span><span class="ansi38-203">|</span><span class="ansi38-231">d:othername</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:person</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> d:personname</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:personname</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> person.name</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:org</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:orgname</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:orgdiv</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:affiliation</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> person.name</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contentwithlink </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>

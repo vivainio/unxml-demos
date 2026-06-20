@@ -17,11 +17,18 @@
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xs</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/2001/XMLSchema</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xsl</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/1999/XSL/Transform</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">import</span><span class="ansi38-231">(</span><span class="ansi38-149">href</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">iso_schematron_skeleton_for_xslt1.xsl</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> diagnose</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> phase</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> allow-foreign</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> generate-paths</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> generate-fired-rule</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> diagnose </span><span class="ansi38-203">:=</span><span class="ansi38-231"> true</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> phase </span><span class="ansi38-203">:=</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-231">//</span><span class="ansi38-208">schold:schema</span><span class="ansi38-231">/</span><span class="ansi38-208">@defaultPhase:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> </span><span class="ansi38-231">//</span><span class="ansi38-208">schold:schema</span><span class="ansi38-231">/</span><span class="ansi38-208">@defaultPhase</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-231">//</span><span class="ansi38-208">iso:schema</span><span class="ansi38-231">/</span><span class="ansi38-208">@defaultPhase:</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> </span><span class="ansi38-231">//</span><span class="ansi38-208">iso:schema</span><span class="ansi38-231">/</span><span class="ansi38-208">@defaultPhase</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">        </span><span class="ansi38-186">"</span><span class="ansi38-186">#ALL</span><span class="ansi38-186">"</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> allow-foreign </span><span class="ansi38-203">:=</span><span class="ansi38-231"> false</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> generate-paths </span><span class="ansi38-203">:=</span><span class="ansi38-231"> true</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> generate-fired-rule </span><span class="ansi38-203">:=</span><span class="ansi38-231"> true</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> optimize</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> output-encoding</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> sch.exslt.imports</span>
@@ -34,7 +41,7 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-root</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> title</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> contents</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> queryBinding</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> queryBinding </span><span class="ansi38-203">:=</span><span class="ansi38-231"> xslt1</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> schemaVersion</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> id</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> version</span>
@@ -63,18 +70,7 @@
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">value-of</span><span class="ansi38-231">(</span><span class="ansi38-149">select</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">$fileDirParameter</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contents</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-assert</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> test</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> diagnostics</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> id</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> flag</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> role</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> subject</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> fpi</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> icon</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> lang</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> see</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> space</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-assert</span><span class="ansi38-231">(</span><span class="ansi38-141">test</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">diagnostics</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">id</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">flag</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">role</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">subject</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">fpi</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">icon</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">lang</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">see</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">space</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">svrl:</span><span class="ansi38-203">failed-assert</span><span class="ansi38-231">(</span><span class="ansi38-149">test</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">{$test}</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">if</span><span class="ansi38-231"> </span><span class="ansi38-149">string-length</span><span class="ansi38-231">( $</span><span class="ansi38-208">id</span><span class="ansi38-231"> ) </span><span class="ansi38-203">&gt;</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">attribute</span><span class="ansi38-231">(</span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">id</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
@@ -103,18 +99,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">message</span><span class="ansi38-231">(</span><span class="ansi38-149">terminate</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">yes</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> TERMINATING</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231">  $</span><span class="ansi38-208">terminate</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'assert'</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">message</span><span class="ansi38-231">(</span><span class="ansi38-149">terminate</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">yes</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> TERMINATING</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-report</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> id</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> test</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> diagnostics</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> flag</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> role</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> subject</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> fpi</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> icon</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> lang</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> see</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> space</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-report</span><span class="ansi38-231">(</span><span class="ansi38-141">id</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">test</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">diagnostics</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">flag</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">role</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">subject</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">fpi</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">icon</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">lang</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">see</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">space</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">svrl:</span><span class="ansi38-203">successful-report</span><span class="ansi38-231">(</span><span class="ansi38-149">test</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">{$test}</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">if</span><span class="ansi38-231">  </span><span class="ansi38-149">string-length</span><span class="ansi38-231">( $</span><span class="ansi38-208">id</span><span class="ansi38-231"> ) </span><span class="ansi38-203">&gt;</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">attribute</span><span class="ansi38-231">(</span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">id</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
@@ -141,8 +126,7 @@
 <span class="ansi38-231">          </span><span class="ansi38-203">str</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $diagnostics</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231">  $</span><span class="ansi38-208">terminate</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'yes'</span><span class="ansi38-231"> </span><span class="ansi38-203">or</span><span class="ansi38-231"> $</span><span class="ansi38-208">terminate</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'true'</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">message</span><span class="ansi38-231">(</span><span class="ansi38-149">terminate</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">yes</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> TERMINATING</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-dir</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> value</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-dir</span><span class="ansi38-231">(</span><span class="ansi38-141">value</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231">  $</span><span class="ansi38-208">allow-foreign</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'true'</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">copy</span><span class="ansi38-231"> .</span>
@@ -150,13 +134,7 @@
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">text</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">text</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-diagnostic</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> id</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> fpi</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> icon</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> lang</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> see</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> space</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-diagnostic</span><span class="ansi38-231">(</span><span class="ansi38-141">id</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">fpi</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">icon</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">lang</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">see</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">space</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">svrl:</span><span class="ansi38-203">diagnostic-reference</span><span class="ansi38-231">(</span><span class="ansi38-149">diagnostic</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">{$id}</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> richParms</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">fpi</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $fpi</span>
@@ -165,8 +143,7 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">see</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $see</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">space</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $space</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-emph</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> class</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-emph</span><span class="ansi38-231">(</span><span class="ansi38-141">class</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231">  $</span><span class="ansi38-208">allow-foreign</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'true'</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">copy</span><span class="ansi38-231"> .</span>
@@ -174,17 +151,7 @@
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">text</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">text</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-rule</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> id</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> context</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> flag</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> role</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> subject</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> fpi</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> icon</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> lang</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> see</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> space</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-rule</span><span class="ansi38-231">(</span><span class="ansi38-141">id</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">context</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">flag</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">role</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">subject</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">fpi</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">icon</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">lang</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">see</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">space</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231">  $</span><span class="ansi38-208">generate-fired-rule</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'true'</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-242">svrl:</span><span class="ansi38-203">fired-rule</span><span class="ansi38-231">(</span><span class="ansi38-149">context</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">{$context}</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> richParms</span><span class="ansi38-231">:</span>
@@ -199,26 +166,12 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">if</span><span class="ansi38-231">  </span><span class="ansi38-149">string-length</span><span class="ansi38-231">( $</span><span class="ansi38-208">role</span><span class="ansi38-231"> ) </span><span class="ansi38-203">&gt;</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">          </span><span class="ansi38-208">@role</span>
 <span class="ansi38-231">            </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231">  $</span><span class="ansi38-208">role</span><span class="ansi38-231"> </span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-ns</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> prefix</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> uri</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-ns</span><span class="ansi38-231">(</span><span class="ansi38-141">prefix</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">uri</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">svrl:</span><span class="ansi38-203">ns-prefix-in-attribute-values</span><span class="ansi38-231">(</span><span class="ansi38-149">prefix</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">{$prefix}</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">uri</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">{$uri}</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-p</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> icon</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> class</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> id</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> lang</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-p</span><span class="ansi38-231">(</span><span class="ansi38-141">icon</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">class</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">id</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">lang</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">svrl:</span><span class="ansi38-203">text</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-pattern</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> name</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> id</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> is-a</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> fpi</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> icon</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> lang</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> see</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> space</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-pattern</span><span class="ansi38-231">(</span><span class="ansi38-141">name</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">id</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">is-a</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">fpi</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">icon</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">lang</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">see</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">space</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">svrl:</span><span class="ansi38-203">active-pattern</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">if</span><span class="ansi38-231">  </span><span class="ansi38-149">string</span><span class="ansi38-231">( $</span><span class="ansi38-208">id</span><span class="ansi38-231"> )</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">attribute</span><span class="ansi38-231">(</span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">id</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
@@ -234,11 +187,8 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">space</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $space</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">      </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">apply-templates</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-message</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> pattern</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> role</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-span</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> class</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-message</span><span class="ansi38-231">(</span><span class="ansi38-141">pattern</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">role</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process-span</span><span class="ansi38-231">(</span><span class="ansi38-141">class</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231">  $</span><span class="ansi38-208">allow-foreign</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'true'</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">copy</span><span class="ansi38-231"> .</span>
@@ -246,12 +196,7 @@
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">text</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">text</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> richParms</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> fpi</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> icon</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> lang</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> see</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> space</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> richParms</span><span class="ansi38-231">(</span><span class="ansi38-141">fpi</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">icon</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">lang</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">see</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">space</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231">  $</span><span class="ansi38-208">allow-foreign</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'true'</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">if</span><span class="ansi38-231"> </span><span class="ansi38-149">string</span><span class="ansi38-231">($</span><span class="ansi38-208">fpi</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">attribute</span><span class="ansi38-231">(</span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">fpi</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
@@ -268,9 +213,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> </span><span class="ansi38-149">string</span><span class="ansi38-231">($</span><span class="ansi38-208">lang</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">attribute</span><span class="ansi38-231">(</span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">xml:lang</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> $</span><span class="ansi38-208">lang</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> linkableParms</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> role</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> subject</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> linkableParms</span><span class="ansi38-231">(</span><span class="ansi38-141">role</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">subject</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231">  </span><span class="ansi38-149">string</span><span class="ansi38-231">($</span><span class="ansi38-208">role</span><span class="ansi38-231"> )</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-242">axsl:</span><span class="ansi38-203">attribute</span><span class="ansi38-231">(</span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">role</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231">  $</span><span class="ansi38-208">role</span><span class="ansi38-231"> </span>
