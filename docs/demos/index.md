@@ -1,4 +1,4 @@
-# unxml demos
+# Gallery
 
 Real-world XML documents rendered with [`unxml`](https://github.com/vivainio/unxml-rs), syntax-highlighted with the same grammar `unxml` ships for `bat`. Each link opens the full rendered output edge-to-edge.
 
