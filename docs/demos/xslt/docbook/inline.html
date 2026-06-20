@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DocBook XSL — inline elements · unxml</title>
+<link rel="stylesheet" href="../../ansi.css">
+</head>
+<body>
+<a class="unxml-back" href="../../">← all demos</a>
+<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">stylesheet</span><span class="ansi38-248248242">(</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-166226046">exclude-result-prefixes</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">xlink suwl d</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-166226046">version</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">1.0</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-166226046">xmlns:d</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">http://docbook.org/ns/docbook</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-166226046">xmlns:suwl</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-166226046">xmlns:xlink</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">http://www.w3.org/1999/xlink</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-166226046">xmlns:xsl</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">http://www.w3.org/1999/XSL/Transform</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">key</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">match</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">d:glossentry</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">name</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">glossentries</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">use</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">normalize-space(d:glossterm)</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">key</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">match</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">d:glossentry</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">name</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">glossentries</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">use</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">normalize-space(d:glossterm/@baseform)</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #simple.xlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> node </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> linkend </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $node/</span><span class="ansi38-253151031">@linkend</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> xhref </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $node/</span><span class="ansi38-253151031">@xlink:href</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> ($</span><span class="ansi38-253151031">linkend</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">xhref</span><span class="ansi38-248248242">) </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">ancestor::</span><span class="ansi38-249038114">*</span><span class="ansi38-248248242">[</span><span class="ansi38-253151031">@xlink:href</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@linkend</span><span class="ansi38-248248242">]</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">message</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">WARNING: nested link may be undefined in output:</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">name</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">linkend</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">@linkend = '</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">linkend</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">'&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">xhref</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">@xlink:href = '</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">xhref</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">'&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">nested inside parent element</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">name</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">parent::</span><span class="ansi38-249038114">*</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">target</span><span class="ansi38-166226046">.show</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">@xlink:show</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'new'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">@xlink:show</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'replace'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">link</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">xhref</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">not</span><span class="ansi38-248248242">($</span><span class="ansi38-190132255">node</span><span class="ansi38-248248242">/@</span><span class="ansi38-190132255">xlink:type</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> or</span>
+<span class="ansi38-248248242">                           $node/</span><span class="ansi38-253151031">@xlink:type</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242">'simple')</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">is</span><span class="ansi38-166226046">.idref</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">starts-with</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">xhref</span><span class="ansi38-248248242">,</span><span class="ansi38-230219116">'#'</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">                            </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">not</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">contains</span><span class="ansi38-248248242">($</span><span class="ansi38-190132255">xhref</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242">'&amp;#</span><span class="ansi38-190132255">40</span><span class="ansi38-248248242">;'</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">                            </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> starts-with</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">$</span><span class="ansi38-190132255">xhref</span><span class="ansi38-248248242">,</span>
+<span class="ansi38-248248242">                                       '#</span><span class="ansi38-190132255">xpointer</span><span class="ansi38-248248242">&amp;#</span><span class="ansi38-190132255">40</span><span class="ansi38-248248242">;</span><span class="ansi38-190132255">id</span><span class="ansi38-248248242">&amp;#</span><span class="ansi38-190132255">40</span><span class="ansi38-248248242">;'</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">is</span><span class="ansi38-166226046">.olink</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">contains</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">xhref</span><span class="ansi38-248248242">,</span><span class="ansi38-230219116">'#'</span><span class="ansi38-248248242">) </span><span class="ansi38-249038114">and</span>
+<span class="ansi38-248248242">                 </span><span class="ansi38-253151031">@xlink:role</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> $xolink.role</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">is.olink</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">1</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> olink</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">is.idref</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">1</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">idref</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> xpointer.idref</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">xpointer</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $xhref</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">targets</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> key</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">'</span><span class="ansi38-190132255">id</span><span class="ansi38-248248242">'</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242">$</span><span class="ansi38-190132255">idref</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $targets[1]</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> check.id.unique</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">linkend</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $idref</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">count</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">target</span><span class="ansi38-248248242">) </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">message</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">XLink to nonexistent id:</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">idref</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> href.target</span>
+<span class="ansi38-248248242">                        </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">@xlink:title</span>
+<span class="ansi38-248248242">                        </span><span class="ansi38-253151031">@title</span>
+<span class="ansi38-248248242">                          </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">@xlink:title</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">                        </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">target.show</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-230219116">''</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-253151031">@target</span>
+<span class="ansi38-248248242">                        </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">target.show</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">xhref</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">@xlink:title</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-253151031">@title</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">/</span><span class="ansi38-253151031">@xlink:title</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">target.show</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-230219116">''</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-253151031">@target</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">target.show</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">ulink.target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-230219116">''</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-253151031">@target</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">ulink.target</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">linkend</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">targets</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> key</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">'</span><span class="ansi38-190132255">id</span><span class="ansi38-248248242">'</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242">$</span><span class="ansi38-190132255">linkend</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $targets[1]</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> check.id.unique</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">linkend</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $linkend</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> href.target</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">function-available</span><span class="ansi38-248248242">(</span><span class="ansi38-230219116">'suwl:unwrapLinks'</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> suwl:unwrapLinks</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">$</span><span class="ansi38-190132255">link</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $link</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.charseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> wrapper-name</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">element</span><span class="ansi38-248248242"> {$wrapper-name}</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> generate.html.title</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.monoseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">code</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.boldseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">local-name</span><span class="ansi38-248248242">(..) </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'title'</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'figure'</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'example'</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'table')</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">strong</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.italicseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">em</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.boldmonoseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">local-name</span><span class="ansi38-248248242">(..) </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'title'</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'figure'</span>
+<span class="ansi38-248248242">                         </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'example'</span>
+<span class="ansi38-248248242">                         </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'table'</span>
+<span class="ansi38-248248242">                         </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'formalpara')</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">code</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">strong</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">code</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> generate.html.title</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dir</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.italicmonoseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">em</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">code</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> generate.html.title</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dir</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.superscriptseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">sup</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> generate.html.title</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dir</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #inline.subscriptseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">sub</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> generate.html.title</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dir</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:author</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:editor</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:othercredit</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> common.html.attributes</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:authorinitials</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:accel</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:action</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:application</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:classname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:exceptionname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:interfacename</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:methodname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:command</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.boldseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:computeroutput</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:constant</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:database</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:date</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:errorcode</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:errorname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:errortype</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:errortext</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:envar</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:filename</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:function</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">function.parens</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'0'</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">d:parameter</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">or</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">d:function</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">or</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">d:replaceable</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">nodes</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> text</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">)</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">*</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> simple.xlink</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $nodes[1]</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">(</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $nodes[position</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242">&gt;1]</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">)</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:function/d:parameter </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">priority</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">2</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicmonoseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">function.parens</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">following-sibling::</span><span class="ansi38-249038114">*</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">,</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:function/d:replaceable </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">priority</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">2</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicmonoseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">function.parens</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">following-sibling::</span><span class="ansi38-249038114">*</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">,</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:guibutton</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:guiicon</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:guilabel</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:guimenu</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:guimenuitem</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:guisubmenu</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:hardware</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:interface</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:interfacedefinition</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:keycap</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@function</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">normalize-space</span><span class="ansi38-248248242">(.) </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">''</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.boldseq</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.template</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">context</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 'keycap'</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">name</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@function</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.boldseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:keycode</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:keysym</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:literal</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:code</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:medialabel</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:shortcut</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.boldseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:mousebutton</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:option</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:package</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:parameter</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicmonoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:property</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:prompt</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:replaceable </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">priority</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">1</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicmonoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:returnvalue</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:structfield</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicmonoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:structname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:symbol</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:systemitem</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:token</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:type</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:userinput</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.boldmonoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:abbrev</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">wrapper-name</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> abbr</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:acronym</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">wrapper-name</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> acronym</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:citerefentry</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">citerefentry.link</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'0'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> generate.citerefentry.link</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #generate.citerefentry.link</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #x.generate.citerefentry.link</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">http://example.com/cgi-bin/man.cgi?</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">d:refentrytitle</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">(</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">d:manvolnum</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">)</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:citetitle</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@pubwork</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'article'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.startquote</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.endquote</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:emphasis</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@role</span><span class="ansi38-248248242">  </span><span class="ansi38-249038114">and</span>
+<span class="ansi38-248248242">                      </span><span class="ansi38-249038114">normalize-space</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">@</span><span class="ansi38-190132255">role</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> !</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> '' and</span>
+<span class="ansi38-248248242">                      $emphasis.propagates.style !</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 0</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> anchor</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> simple.xlink</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@role</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'bold'</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@role</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'strong'</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">local-name</span><span class="ansi38-248248242">(..) </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'title'</span>
+<span class="ansi38-248248242">                              </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'figure'</span>
+<span class="ansi38-248248242">                              </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'example'</span>
+<span class="ansi38-248248242">                              </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">/</span><span class="ansi38-190132255">..</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'table')</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">strong</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@role</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">emphasis.propagates.style</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">em</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:foreignphrase</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:markup</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:phrase</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> locale.html.attributes</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@role</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span>
+<span class="ansi38-248248242">                     </span><span class="ansi38-249038114">normalize-space</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">@</span><span class="ansi38-190132255">role</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242"> !</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> '' and</span>
+<span class="ansi38-248248242">                     $phrase.propagates.style !</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 0</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dir</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> anchor</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> simple.xlink</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> apply-annotations</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:quote</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">depth</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dot.count</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">string</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">number</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">level</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">multiple</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">depth</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">mod</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">2</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.startquote</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.endquote</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.nestedstartquote</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.nestedendquote</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:varname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:wordasword</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:lineannotation</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">em</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:superscript</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.superscriptseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:subscript</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.subscriptseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:trademark</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@class</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'copyright'</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@class</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 'registered'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dingbat</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">dingbat</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@class</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@class</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-230219116">'service'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">sup</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> SM</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dingbat</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">dingbat</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 'trademark'</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:firstterm</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> glossterm</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">firstterm</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 1</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:glossterm</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> firstterm </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 0</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> ($</span><span class="ansi38-253151031">firstterm.only.link</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">firstterm</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">1</span><span class="ansi38-248248242">) </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@linkend</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">targets</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> key</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">'</span><span class="ansi38-190132255">id</span><span class="ansi38-248248242">'</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242">@</span><span class="ansi38-190132255">linkend</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $targets[1]</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> check.id.unique</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">linkend</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@linkend</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">target</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> href.target</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">contentwithlink</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">(</span><span class="ansi38-253151031">@linkend</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">$</span><span class="ansi38-166226046">firstterm.only.link</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">or</span><span class="ansi38-248248242"> $</span><span class="ansi38-166226046">firstterm</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">1</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">$</span><span class="ansi38-190132255">glossterm.auto.link</span><span class="ansi38-248248242"> != </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> $glossary.collection !</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> ''</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">term</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@baseform</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@baseform</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">cterm</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-190132255">document</span><span class="ansi38-248248242">($</span><span class="ansi38-190132255">glossary.collection</span><span class="ansi38-248248242">,</span><span class="ansi38-190132255">.</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242">//d:glossentry[d:glossterm</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242">$term])[1]</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">glossary</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> //d:glossary[</span><span class="ansi38-253151031">@role</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242">'auto']</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">count</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">glossary</span><span class="ansi38-248248242">) </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">1</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">message</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">Warning: glossary.collection specified, but there are</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">count</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">glossary</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">automatic glossaries</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">glosschunk</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> href.target</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $glossary</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">chunkbase</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">contains</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">glosschunk</span><span class="ansi38-248248242">, </span><span class="ansi38-230219116">'#'</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">substring-before</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">glosschunk</span><span class="ansi38-248248242">, </span><span class="ansi38-230219116">'#'</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">glosschunk</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">cterm</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">message</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">There's no entry for</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">term</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">in</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">glossary.collection</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">id</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> object.id</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $cterm</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">a</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">href</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">{$chunkbase}#{$id}</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">(</span><span class="ansi38-253151031">@linkend</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">$</span><span class="ansi38-166226046">firstterm.only.link</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">or</span><span class="ansi38-248248242"> $</span><span class="ansi38-166226046">firstterm</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">1</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">                    </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> $glossterm.auto.link !</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> 0</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">term</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@baseform</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">normalize-space</span><span class="ansi38-248248242">(</span><span class="ansi38-253151031">@baseform</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">normalize-space</span><span class="ansi38-248248242">(.)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">targets</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> key</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">'</span><span class="ansi38-190132255">glossentries</span><span class="ansi38-248248242">'</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> $</span><span class="ansi38-190132255">term</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $targets[1]</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">count</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">targets</span><span class="ansi38-248248242">)</span><span class="ansi38-249038114">=</span><span class="ansi38-190132255">0</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">message</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">Error: no glossentry for glossterm:</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">.</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@id</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@xml:id</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-253151031">@name</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> (</span><span class="ansi38-253151031">@id</span><span class="ansi38-248248242">|</span><span class="ansi38-253151031">@xml:id</span><span class="ansi38-248248242">)[</span><span class="ansi38-190132255">1</span><span class="ansi38-248248242">]</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> href.target</span>
+<span class="ansi38-248248242">                  </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">                </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.italicseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:termdef</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.template</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">context</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 'termdef'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">name</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 'prefix'</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> gentext.template</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">context</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 'termdef'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">name</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 'suffix'</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:sgmltag</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:tag</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> format.sgmltag</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #format.sgmltag</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> class</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'attribute'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'attvalue'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'element'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'endtag'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;/</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'genentity'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&amp;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'numcharref'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&amp;#</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'paramentity'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">%</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'pi'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;?</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'xmlpi'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;?</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">?&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'starttag'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'emptytag'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">/&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'sgmlcomment'</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'comment'</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;!--</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">--&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">code</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> simple.xlink</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $content</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:email</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">content</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">email.delimiters.enabled</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&lt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">mailto:</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">email.delimiters.enabled</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">&gt;</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:keycombo</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">action</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@action</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">joinchar</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">action</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'seq'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">action</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'simul'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">action</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'press'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">action</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'click'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">action</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'double-click'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">action</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'other'</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">foreach</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">*</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">position</span><span class="ansi38-248248242">()</span><span class="ansi38-249038114">&gt;</span><span class="ansi38-190132255">1</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">joinchar</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:uri</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.monoseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:menuchoice</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">shortcut</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> ./d:shortcut</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> process.menuchoice</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">shortcut</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">(</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $shortcut</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">)</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> #process.menuchoice</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> nodelist </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> d:guibutton</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:guiicon</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:guilabel</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:guimenu</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:guimenuitem</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:guisubmenu</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:interface</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> count </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> 1</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">count</span><span class="ansi38-249038114">&gt;</span><span class="ansi38-166226046">count</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">nodelist</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">count</span><span class="ansi38-249038114">=</span><span class="ansi38-190132255">1</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $nodelist[$count</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242">position()]</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> process.menuchoice</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">nodelist</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $nodelist</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">count</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $count+1</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">node</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $nodelist[$count</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242">position()]</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">local-name</span><span class="ansi38-248248242">($</span><span class="ansi38-253151031">node</span><span class="ansi38-248248242">)</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">'guimenuitem'</span>
+<span class="ansi38-248248242">                        </span><span class="ansi38-249038114">or</span><span class="ansi38-248248242"> local-name</span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">$</span><span class="ansi38-190132255">node</span><span class="ansi38-248248242">)</span><span class="ansi38-249038114">=</span><span class="ansi38-248248242">'guisubmenu'</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">menuchoice.menu.separator</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">menuchoice.separator</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $node</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> process.menuchoice</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">nodelist</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $nodelist</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">count</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $count+1</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:optional</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">arg.choice.opt.open.str</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">&lt;-</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">arg.choice.opt.close.str</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:citation</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">targets</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> </span><span class="ansi38-248248242">(</span><span class="ansi38-248248242">//</span><span class="ansi38-190132255">d:biblioentry</span><span class="ansi38-248248242"> | //</span><span class="ansi38-190132255">d:bibliomixed</span><span class="ansi38-248248242">)</span><span class="ansi38-248248242">[d:abbrev </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> string(current())]</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $targets[1]</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">(</span><span class="ansi38-253151031">d:xref</span><span class="ansi38-248248242">) </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">(</span><span class="ansi38-253151031">d:link</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">[</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> href.target</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">bibliography.numbered</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">]</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">[</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">]</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:citebiblioid</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">targets</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> //*[d:biblioid </span><span class="ansi38-249038114">=</span><span class="ansi38-248248242"> string(current())]</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $targets[1]</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">choose</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">when</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">target</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">(</span><span class="ansi38-253151031">d:xref</span><span class="ansi38-248248242">) </span><span class="ansi38-249038114">and</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">not</span><span class="ansi38-248248242">(</span><span class="ansi38-253151031">d:link</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">[</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">a</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-253151031">@href</span>
+<span class="ansi38-248248242">            </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> href.target</span>
+<span class="ansi38-248248242">              </span><span class="ansi38-249038114">object</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> $target</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">]</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">else</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">[</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">]</span><span class="ansi38-230219116">"</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:biblioentry</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:bibliomixed </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">mode</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">citation</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-117113094">xsl:</span><span class="ansi38-249038114">number</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">count</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">d:biblioentry|d:bibliomixed</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">format</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">1</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">from</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">d:bibliography</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">,</span><span class="ansi38-248248242"> </span><span class="ansi38-166226046">level</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">any</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:comment[&amp;comment.block.parents;]</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:remark[&amp;comment.block.parents;]</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">show.comments</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">p</span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">class</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">remark</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">em</span>
+<span class="ansi38-248248242">          </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:comment</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:remark</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> $</span><span class="ansi38-253151031">show.comments</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">!=</span><span class="ansi38-248248242"> </span><span class="ansi38-190132255">0</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">em</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:productname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">if</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@class</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> dingbat</span>
+<span class="ansi38-248248242">        </span><span class="ansi38-249038114">dingbat</span><span class="ansi38-248248242"> </span><span class="ansi38-249038114">:=</span><span class="ansi38-248248242"> </span><span class="ansi38-253151031">@class</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:productnumber</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:pob</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:street</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:city</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:state</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:postcode</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:country</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:otheraddr</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:phone</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:fax</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:honorific</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:firstname</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:givenname</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:surname</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:lineage</span><span class="ansi38-249038114">|</span><span class="ansi38-248248242">d:othername</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> inline.charseq</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:person</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:personname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:org</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:orgname</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:orgdiv</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:affiliation</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> content</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">param</span><span class="ansi38-248248242"> contentwithlink</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">span</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">apply</span><span class="ansi38-248248242"> .</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">call</span><span class="ansi38-248248242"> id.attribute</span>
+<span class="ansi38-248248242">      </span><span class="ansi38-249038114">copy</span><span class="ansi38-248248242"> $contentwithlink</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> d:beginpage</span>
+<span class="ansi38-248248242">  </span><span class="ansi38-249038114">template</span><span class="ansi38-248248242"> &amp;inline.elements; </span><span class="ansi38-248248242">(</span><span class="ansi38-166226046">mode</span><span class="ansi38-249038114">=</span><span class="ansi38-230219116">"</span><span class="ansi38-230219116">xref-to</span><span class="ansi38-230219116">"</span><span class="ansi38-248248242">)</span>
+<span class="ansi38-248248242">    </span><span class="ansi38-249038114">apply</span>
+</span></pre>
+</body>
+</html>
