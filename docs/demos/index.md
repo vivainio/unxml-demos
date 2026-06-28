@@ -1429,6 +1429,190 @@ The **basics** below are shown inline — original source on the left, `unxml` o
 <span class="ansi38-231">  </span><span class="ansi38-203">LegalMonetaryTotal</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">PayableAmount</span><span class="ansi38-231">(</span><span class="ansi38-149">currencyID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">EUR</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1240.00</span></span></pre></div>
 </div></div>
+<div class="unxml-sample">
+<h3>CII / Factur-X — wrapper chains folded with --collapse</h3>
+<p class="unxml-cap"><a href="https://github.com/vivainio/unxml-demos/blob/main/examples/cii/factur-x-basic.xml">factur-x-basic.xml</a> · 97 → 82 lines</p>
+<div class="unxml-cols">
+<div class="unxml-col"><div class="unxml-col-label">unxml --auto</div><pre class="unxml"><span class="ansi2html-content"><span class="ansi38-203">CrossIndustryInvoice</span><span class="ansi38-231">(</span>
+<span class="ansi38-231">    </span><span class="ansi38-149">xmlns</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
+<span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xsi</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/2001/XMLSchema-instance</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">ExchangedDocumentContext</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">GuidelineSpecifiedDocumentContextParameter</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">ExchangedDocument</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 471102</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 380</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IssueDateTime</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241115</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Rechnung gemäß Bestellung vom 01.11.2024.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> Lieferant GmbH</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Lieferantenstraße 20</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 80333 München</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Deutschland</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Geschäftsführer</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">Hans</span><span class="ansi38-231"> Muster</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Handelsregisternummer</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">H</span><span class="ansi38-231"> A 123</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> Unsere GLN</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">4000001123452</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Ihre GLN</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">4000001987658</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Ihre Kundennummer</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">GE2020211</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Zahlbar innerhalb 30 Tagen netto bis 25.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024.</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">SupplyChainTradeTransaction</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedSupplyChainTradeLineItem</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">AssociatedDocumentLineDocument</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">LineID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeProduct</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0160</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4012345001235</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">|</span><span class="ansi38-231"> GTIN</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">4012345001235</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">|</span><span class="ansi38-231">                     Unsere Art.-Nr.</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">TB100A4</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">|</span><span class="ansi38-231">                     Trennblätter A4</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeAgreement</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">NetPriceProductTradePrice</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 9.9000</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">BasisQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">H87</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1.0000</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeDelivery</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">BilledQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">H87</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20.0000</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeSettlement</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradeTax</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTradeSettlementLineMonetarySummation</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeAgreement</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SellerTradeParty</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Lieferant GmbH</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 80333</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Lieferantenstraße 20</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> München</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTaxRegistration</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">ID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">VA</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE123456789</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTaxRegistration</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">ID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">FC</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 201/113/40209</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">BuyerTradeParty</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Kunden AG Mitte</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 69876</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Hans Muster</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">LineTwo</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Kundenstraße 15</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Frankfurt</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeDelivery</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">ActualDeliverySupplyChainEvent</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">OccurrenceDateTime</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241114</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeSettlement</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">InvoiceCurrencyCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> EUR</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">ApplicableTradeTax</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">CalculatedAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 37.62</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">BasisAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradePaymentTerms</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Zahlbar innerhalb 30 Tagen netto bis 25.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024.</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">DueDateDateTime</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241215</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeSettlementHeaderMonetarySummation</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">ChargeTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">AllowanceTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TaxBasisTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TaxTotalAmount</span><span class="ansi38-231">(</span><span class="ansi38-149">currencyID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">EUR</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 37.62</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">GrandTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 235.62</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TotalPrepaidAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">DuePayableAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 235.62</span></span></pre></div>
+<div class="unxml-col"><div class="unxml-col-label">unxml --auto --collapse</div><pre class="unxml"><span class="ansi2html-content"><span class="ansi38-203">CrossIndustryInvoice</span><span class="ansi38-231">(</span>
+<span class="ansi38-231">    </span><span class="ansi38-149">xmlns</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
+<span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xsi</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/2001/XMLSchema-instance</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">ExchangedDocumentContext</span><span class="ansi38-231">/</span><span class="ansi38-203">GuidelineSpecifiedDocumentContextParameter</span><span class="ansi38-231">/</span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">ExchangedDocument</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 471102</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 380</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IssueDateTime</span><span class="ansi38-231">/</span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241115</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span><span class="ansi38-231">/</span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Rechnung gemäß Bestellung vom 01.11.2024.</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span><span class="ansi38-231">/</span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231"> Lieferant GmbH</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Lieferantenstraße 20</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 80333 München</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Deutschland</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Geschäftsführer</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">Hans</span><span class="ansi38-231"> Muster</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Handelsregisternummer</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">H</span><span class="ansi38-231"> A 123</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span><span class="ansi38-231">/</span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231"> Unsere GLN</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">4000001123452</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Ihre GLN</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">4000001987658</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Ihre Kundennummer</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">GE2020211</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">|</span><span class="ansi38-231">                 Zahlbar innerhalb 30 Tagen netto bis 25.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024.</span>
+<span class="ansi38-231">  </span><span class="ansi38-203">SupplyChainTradeTransaction</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">IncludedSupplyChainTradeLineItem</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">AssociatedDocumentLineDocument</span><span class="ansi38-231">/</span><span class="ansi38-203">LineID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeProduct</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0160</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4012345001235</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">|</span><span class="ansi38-231"> GTIN</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">4012345001235</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">|</span><span class="ansi38-231">                     Unsere Art.-Nr.</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">TB100A4</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">|</span><span class="ansi38-231">                     Trennblätter A4</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeAgreement</span><span class="ansi38-231">/</span><span class="ansi38-203">NetPriceProductTradePrice</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 9.9000</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">BasisQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">H87</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1.0000</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeDelivery</span><span class="ansi38-231">/</span><span class="ansi38-203">BilledQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">H87</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20.0000</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeSettlement</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradeTax</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTradeSettlementLineMonetarySummation</span><span class="ansi38-231">/</span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeAgreement</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SellerTradeParty</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Lieferant GmbH</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 80333</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Lieferantenstraße 20</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> München</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTaxRegistration</span><span class="ansi38-231">/</span><span class="ansi38-203">ID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">VA</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE123456789</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTaxRegistration</span><span class="ansi38-231">/</span><span class="ansi38-203">ID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">FC</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 201/113/40209</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">BuyerTradeParty</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Kunden AG Mitte</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 69876</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Hans Muster</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">LineTwo</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Kundenstraße 15</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Frankfurt</span>
+<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeDelivery</span><span class="ansi38-231">/</span><span class="ansi38-203">ActualDeliverySupplyChainEvent</span><span class="ansi38-231">/</span><span class="ansi38-203">OccurrenceDateTime</span><span class="ansi38-231">/</span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span>
+<span class="ansi38-231">        </span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241114</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeSettlement</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">InvoiceCurrencyCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> EUR</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">ApplicableTradeTax</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">CalculatedAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 37.62</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">BasisAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradePaymentTerms</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Zahlbar innerhalb 30 Tagen netto bis 25.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024.</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">DueDateDateTime</span><span class="ansi38-231">/</span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241215</span>
+<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeSettlementHeaderMonetarySummation</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">ChargeTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">AllowanceTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TaxBasisTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 198.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TaxTotalAmount</span><span class="ansi38-231">(</span><span class="ansi38-149">currencyID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">EUR</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 37.62</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">GrandTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 235.62</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">TotalPrepaidAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.00</span>
+<span class="ansi38-231">        </span><span class="ansi38-203">DuePayableAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 235.62</span></span></pre></div>
+</div></div>
 </div>
 
 ## XSLT basics
