@@ -15,6 +15,14 @@
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:exsl</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://exslt.org/common</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xsl</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/1999/XSL/Transform</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">output</span><span class="ansi38-231">(</span><span class="ansi38-149">encoding</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">ISO-8859-1</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">indent</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">no</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">method</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">html</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
+<span class="ansi38-242">  // ********************************************************************</span>
+<span class="ansi38-242">  //</span>
+<span class="ansi38-242">  // This file is part of the XSL DocBook Stylesheet distribution.</span>
+<span class="ansi38-242">  // See ../README or http://cdn.docbook.org/release/xsl/current/ for</span>
+<span class="ansi38-242">  // copyright and other information.</span>
+<span class="ansi38-242">  //</span>
+<span class="ansi38-242">  // ********************************************************************</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">include</span><span class="ansi38-231">(</span><span class="ansi38-149">href</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">../VERSION.xsl</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">include</span><span class="ansi38-231">(</span><span class="ansi38-149">href</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">param.xsl</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">include</span><span class="ansi38-231">(</span><span class="ansi38-149">href</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">../lib/lib.xsl</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
@@ -70,8 +78,10 @@
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">include</span><span class="ansi38-231">(</span><span class="ansi38-149">href</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">publishers.xsl</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> stylesheet.result.type </span><span class="ansi38-203">:=</span><span class="ansi38-231"> 'html'</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">param</span><span class="ansi38-231"> htmlhelp.output </span><span class="ansi38-203">:=</span><span class="ansi38-231"> 0</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">key</span><span class="ansi38-231">(</span><span class="ansi38-149">match</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">*</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">id</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">use</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">@id|@xml:id</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">key</span><span class="ansi38-231">(</span><span class="ansi38-149">match</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">*</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">gid</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">use</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">generate-id()</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> *</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">message</span>
 <span class="ansi38-231">      </span><span class="ansi38-186">"</span><span class="ansi38-186">Element</span><span class="ansi38-186">"</span>
@@ -152,6 +162,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">html.base</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-186">''</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> head.content.base</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $node</span>
+<span class="ansi38-242">    // Insert links to CSS files or insert literal style elements</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> generate.css</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">html.stylesheet</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-186">''</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> output.html.stylesheets</span><span class="ansi38-231">:</span>
@@ -196,6 +207,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">scripts</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-186">''</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> make.script.link</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">script</span><span class="ansi38-149">.filename</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $scripts</span>
+<span class="ansi38-242">  // ============================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> </span><span class="ansi38-203">*</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-149">mode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">head.keywords.content</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">apply</span><span class="ansi38-231"> d:chapterinfo/d:keywordset</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">apply</span><span class="ansi38-231"> d:appendixinfo/d:keywordset</span>
@@ -224,7 +236,12 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">inherit.keywords</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span>
 <span class="ansi38-231">                </span><span class="ansi38-203">and</span><span class="ansi38-231"> parent</span><span class="ansi38-203">::</span><span class="ansi38-231">*:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> parent</span><span class="ansi38-203">::</span><span class="ansi38-231">*</span>
+<span class="ansi38-242">  // ============================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> system.head.content</span><span class="ansi38-231">(</span><span class="ansi38-141">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-141">.</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // FIXME: When chunking, only the annotations actually used</span>
+<span class="ansi38-242">    // in this chunk should be referenced. I don't think it</span>
+<span class="ansi38-242">    // does any harm to reference them all, but it adds</span>
+<span class="ansi38-242">    // unnecessary bloat to each chunk.</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">annotation.support</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231"> </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-231">//</span><span class="ansi38-208">d:annotation:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> add.annotation.links</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">script</span><span class="ansi38-231">(</span><span class="ansi38-149">type</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">text/javascript</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
@@ -243,7 +260,14 @@
 <span class="ansi38-231">          </span><span class="ansi38-186">"</span><span class="ansi38-186">.autoHide();</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">style</span><span class="ansi38-231">(</span><span class="ansi38-149">type</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">text/css</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> $</span><span class="ansi38-208">annotation.css</span>
+<span class="ansi38-242">    // system.head.content is like user.head.content, except that</span>
+<span class="ansi38-242">    // it is called before head.content. This is important because it</span>
+<span class="ansi38-242">    // means, for example, that &lt;style&gt; elements output by system.head.content</span>
+<span class="ansi38-242">    // have a lower CSS precedence than the users stylesheet.</span>
+<span class="ansi38-242">  // ============================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> user.preroot</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // Pre-root output, can be used to output comments and PIs.</span>
+<span class="ansi38-242">    // This must not output any element content!</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> user.head.title</span><span class="ansi38-231">(</span><span class="ansi38-141">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-141">.</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">title</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">title</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $title</span>
@@ -252,14 +276,21 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> user.header.content</span><span class="ansi38-231">(</span><span class="ansi38-141">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-141">.</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> user.footer.content</span><span class="ansi38-231">(</span><span class="ansi38-141">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-141">.</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> user.footer.navigation</span><span class="ansi38-231">(</span><span class="ansi38-141">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-141">.</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">prev</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> /</span><span class="ansi38-141">d:foo</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">next</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> /</span><span class="ansi38-141">d:foo</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-141">nav.context</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">  // To use the same namespace-adjusted nodeset everywhere, it should</span>
+<span class="ansi38-242">  // be created as a global variable here.</span>
+<span class="ansi38-242">  // Used by docbook.xsl, chunk-common.xsl, chunktoc.xsl, and</span>
+<span class="ansi38-242">  // chunk-code.xsl; and in $chunk.hierarchy used in chunkfast.xsl</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">with</span><span class="ansi38-149">.namespace</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">exsl.node.set.available</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231"> </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span>
 <span class="ansi38-231">                </span><span class="ansi38-203">namespace-uri</span><span class="ansi38-231">(</span><span class="ansi38-231">/</span><span class="ansi38-141">*</span><span class="ansi38-231">)</span><span class="ansi38-231"> !</span><span class="ansi38-203">=</span><span class="ansi38-231"> 'http://docbook.org/ns/docbook':</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> /*</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> /</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // * Get a title for current doc so that we let the user</span>
+<span class="ansi38-242">    // * know what document we are processing at this point.</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">doc</span><span class="ansi38-149">.title</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> get.doc.title</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">      // fix namespace if necessary</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">exsl.node.set.available</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231"> </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span>
 <span class="ansi38-231">                  </span><span class="ansi38-203">namespace-uri</span><span class="ansi38-231">(</span><span class="ansi38-231">/</span><span class="ansi38-141">*</span><span class="ansi38-231">)</span><span class="ansi38-231"> !</span><span class="ansi38-203">=</span><span class="ansi38-231"> 'http://docbook.org/ns/docbook':</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> log.message</span><span class="ansi38-231">:</span>
@@ -269,7 +300,17 @@
 <span class="ansi38-231">            </span><span class="ansi38-186">"</span><span class="ansi38-186">namesp. add</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">message</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">            </span><span class="ansi38-186">"</span><span class="ansi38-186">added namespace before processing</span><span class="ansi38-186">"</span>
+<span class="ansi38-242">        // DEBUG: uncomment to save namespace-fixed document.</span>
+<span class="ansi38-242">        // &lt;xsl:message&gt;Saving namespace-fixed document.&lt;/xsl:message&gt;</span>
+<span class="ansi38-242">        // &lt;xsl:call-template name="write.chunk"&gt;</span>
+<span class="ansi38-242">        // &lt;xsl:with-param name="filename" select="'namespace-fixed.debug.xml'"/&gt;</span>
+<span class="ansi38-242">        // &lt;xsl:with-param name="method" select="'xml'"/&gt;</span>
+<span class="ansi38-242">        // &lt;xsl:with-param name="content"&gt;</span>
+<span class="ansi38-242">        // &lt;xsl:copy-of select="exsl:node-set($with.namespace)"/&gt;</span>
+<span class="ansi38-242">        // &lt;/xsl:with-param&gt;</span>
+<span class="ansi38-242">        // &lt;/xsl:call-template&gt;</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">apply</span><span class="ansi38-231"> exsl:node-set</span><span class="ansi38-231">(</span><span class="ansi38-231">$</span><span class="ansi38-141">with.namespace</span><span class="ansi38-231">)</span>
+<span class="ansi38-242">      // Can't process unless namespace fixed with exsl node-set()</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-149">namespace-uri</span><span class="ansi38-231">(</span><span class="ansi38-231">/</span><span class="ansi38-203">*</span><span class="ansi38-231">) </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-186">'http://docbook.org/ns/docbook'</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">message</span><span class="ansi38-231">(</span><span class="ansi38-149">terminate</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">yes</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">          </span><span class="ansi38-186">"</span><span class="ansi38-186">Unable to add the namespace from DB4 document,</span><span class="ansi38-186">"</span>
@@ -320,10 +361,16 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> user.footer.content</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $doc</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> $</span><span class="ansi38-208">html.append</span>
+<span class="ansi38-242">    // Generate any css files only once, not once per chunk</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> generate.css.files</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> root.attributes</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // customize to add attributes to &lt;html&gt; element</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> root.messages</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // redefine this any way you'd like to output messages</span>
+<span class="ansi38-242">    // DO NOT OUTPUT ANYTHING FROM THIS TEMPLATE</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> chunk</span><span class="ansi38-231">(</span><span class="ansi38-141">node</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-141">.</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // The default is that we are not chunking...</span>
 <span class="ansi38-231">    </span><span class="ansi38-186">"</span><span class="ansi38-186">0</span><span class="ansi38-186">"</span>
 </span></pre>
 </body>

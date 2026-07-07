@@ -8,7 +8,9 @@
 </head>
 <body>
 <a class="unxml-back" href="../">← all demos</a>
-<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-203">schema</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
+<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-242">// Modified 17.12.2020 (back to version 11/2019</span>
+<span class="ansi38-242">// For Finvoice version 3.0</span>
+<span class="ansi38-203">schema</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> Finvoice</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">MessageTransmissionDetails</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">MessageTransmissionDetailsType</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">SellerPartyDetails</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">SellerPartyDetailsType</span>
@@ -623,6 +625,9 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">choice</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">group</span><span class="ansi38-231"> </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">InvoiceRowGroup</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">SubInvoiceRow</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">SubInvoiceRowType</span><span class="ansi38-231"> </span><span class="ansi38-203">*</span>
+<span class="ansi38-242">    // &lt;xs:sequence&gt;</span>
+<span class="ansi38-242">    // &lt;xs:element name="SubInvoiceRow" type="SubInvoiceRowType" minOccurs="0" maxOccurs="unbounded"/&gt;</span>
+<span class="ansi38-242">    // &lt;/xs:sequence&gt;</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> RowDefinitionDetailsType</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">RowDefinitionHeaderText</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">type</span><span class="ansi38-231"> </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">genericStringType0_70</span>
@@ -885,6 +890,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">ExchangeDate</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">date</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> AttachmentMessageDetailsType</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">AttachmentMessageIdentifier</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">AttachmentsIdentifierType</span>
+<span class="ansi38-242">  // Common types</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> QuantityType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xs:string</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@QuantityUnitCode</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">genericTokenType0_14</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@QuantityUnitCodeUN</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">unitCodeUN</span>

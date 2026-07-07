@@ -8,7 +8,91 @@
 </head>
 <body>
 <a class="unxml-back" href="../../">← all demos</a>
-<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-203">CrossIndustryInvoice</span><span class="ansi38-231">(</span>
+<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-242">// English disclaimer below.</span>
+<span class="ansi38-242">// Nutzungsrechte</span>
+<span class="ansi38-242">// ZUGFeRD Datenformat Version 2.3.0, 18.09.2024</span>
+<span class="ansi38-242">// Beispiel Version 18.09.2024</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Zweck des Forums elektronisch Rechnung Deutschland, welches am 31. März 2010 unter der Arbeitsgemeinschaft für</span>
+<span class="ansi38-242">// wirtschaftliche Verwaltung e. V. gegründet wurde, ist u. a. die Schaffung und Spezifizierung eines offenen Datenformats</span>
+<span class="ansi38-242">// für strukturierten elektronischen Datenaustausch auf der Grundlage offener und nicht diskriminierender, standardisierter</span>
+<span class="ansi38-242">// Technologien („ZUGFeRD Datenformat“).</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Das ZUGFeRD Datenformat wird nach Maßgabe des FeRD sowohl Unternehmen als auch der öffentlichen Verwaltung</span>
+<span class="ansi38-242">// frei zugänglich gemacht. Hierfür bietet FeRD allen Unternehmen und Organisationen der öffentlichen Verwaltung eine</span>
+<span class="ansi38-242">// Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD-Datenformats zu fairen, sachgerechten und nicht</span>
+<span class="ansi38-242">// diskriminierenden Bedingungen an.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Die Spezifikation des FeRD zur Implementierung des ZUGFeRD Datenformats ist in ihrer jeweils geltenden Fassung</span>
+<span class="ansi38-242">// abrufbar unter www.ferd-net.de.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Im Einzelnen schließt die Nutzungsgewährung ein:</span>
+<span class="ansi38-242">// =====================================</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// FeRD räumt eine Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD Datenformats in der jeweils</span>
+<span class="ansi38-242">// geltenden und akzeptierten Fassung (www.ferd-net.de) ein.</span>
+<span class="ansi38-242">// Die Lizenz beinhaltet ein unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung,</span>
+<span class="ansi38-242">// Weiterbearbeitung und Verbindung mit anderen Produkten.</span>
+<span class="ansi38-242">// Die Lizenz gilt insbesondere für die Entwicklung, die Gestaltung, die Herstellung, den Verkauf, die Nutzung oder</span>
+<span class="ansi38-242">// anderweitige Verwendung des ZUGFeRD Datenformats für Hardware- und/oder Softwareprodukte sowie sonstige</span>
+<span class="ansi38-242">// Anwendungen und Dienste.</span>
+<span class="ansi38-242">// Diese Lizenz schließt nicht die wesentlichen Patente der Mitglieder von FeRD ein. Als wesentliche Patente sind Patente</span>
+<span class="ansi38-242">// und Patentanmeldungen weltweit zu verstehen, die einen oder mehrere Patentansprüche beinhalten, bei denen es sich um</span>
+<span class="ansi38-242">// notwendige Ansprüche handelt. Notwendige Ansprüche sind lediglich jene Ansprüche der Wesentlichen Patente, die durch</span>
+<span class="ansi38-242">// die Implementierung des ZUGFeRD Datenformats notwendigerweise verletzt würden.</span>
+<span class="ansi38-242">// Der Lizenznehmer ist berechtigt, seinen jeweiligen Konzerngesellschaften ein unbefristetes, weltweites, nicht übertragbares,</span>
+<span class="ansi38-242">// unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung, Weiterbearbeitung und Verbindung mit</span>
+<span class="ansi38-242">// anderen Produkten einzuräumen.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Die Lizenz wird kostenfrei zur Verfügung gestellt.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Außer im Falle vorsätzlichen Verschuldens oder grober Fahrlässigkeit haftet FeRD weder für Nutzungsausfall, entgangenen</span>
+<span class="ansi38-242">// Gewinn, Datenverlust, Kommunikationsverlust, Einnahmeausfall, Vertragseinbußen, Geschäftsausfall oder für Kosten,</span>
+<span class="ansi38-242">// Schäden, Verluste oder Haftpflichten im Zusammenhang mit einer Unterbrechung der Geschäftstätigkeit, noch für konkrete,</span>
+<span class="ansi38-242">// beiläufig entstandene, mittelbare Schäden, Straf- oder Folgeschäden und zwar auch dann nicht, wenn die Möglichkeit der</span>
+<span class="ansi38-242">// Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können.</span>
+<span class="ansi38-242">// Right of use</span>
+<span class="ansi38-242">// ZUGFeRD Data format version 2.3.0, September 18th, 2024</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// The purpose of the Forum elektronische Rechnung Deutschland (FeRD), which was founded on March 31, 2010 under the</span>
+<span class="ansi38-242">// umbrella of Arbeitsgemeinschaft für wirtschaftliche Verwaltung e. V., is, among other things, to create and specify an</span>
+<span class="ansi38-242">// open data format for structured electronic data exchange on the basis of open and non discriminatory, standardised</span>
+<span class="ansi38-242">// technologies ("ZUGFeRD data format").</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// The ZUGFeRD data format is used by both companies and public administration according to the FeRD</span>
+<span class="ansi38-242">// made freely accessible. For this purpose FeRD offers all companies and organisations of the public administration a</span>
+<span class="ansi38-242">// License to use the copyrighted ZUGFeRD data format in a fair, appropriate and non</span>
+<span class="ansi38-242">// discriminatory conditions.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// The specification of the FeRD for the implementation of the ZUGFeRD data format is, in its currently valid version</span>
+<span class="ansi38-242">// available at www.ferd-net.de.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// In detail, the grant of use includes</span>
+<span class="ansi38-242">// =====================================</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// FeRD grants a license for the use of the copyrighted ZUGFeRD data format in the respective</span>
+<span class="ansi38-242">// valid and accepted version (www.ferd-net.de).</span>
+<span class="ansi38-242">// The license includes an irrevocable right of use including the right of further development,</span>
+<span class="ansi38-242">// Further processing and connection with other products.</span>
+<span class="ansi38-242">// The license applies in particular to the development, design, production, sale, use or</span>
+<span class="ansi38-242">// other use of the ZUGFeRD data format for hardware and/or software products and other</span>
+<span class="ansi38-242">// applications and services.</span>
+<span class="ansi38-242">// This license does not include the essential patents of the members of FeRD. The essential patents are patents</span>
+<span class="ansi38-242">// and patent applications worldwide which contain one or more claims that are</span>
+<span class="ansi38-242">// necessary claims. Necessary claims are only those claims of the essential patents which are</span>
+<span class="ansi38-242">// the implementation of the ZUGFeRD data format would necessarily be violated.</span>
+<span class="ansi38-242">// The Licensee is entitled to provide its respective group companies with an unlimited, worldwide, non-transferable,</span>
+<span class="ansi38-242">// irrevocable right of use including the right of further development, further processing and connection with</span>
+<span class="ansi38-242">// other products.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// The license is provided free of charge.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Except in the case of intentional fault or gross negligence, FeRD is not liable for loss of use, loss of</span>
+<span class="ansi38-242">// Profit, loss of data, loss of communication, loss of revenue, loss of contracts, loss of business or for costs</span>
+<span class="ansi38-242">// damages, losses or liabilities in connection with an interruption of business, nor for concrete,</span>
+<span class="ansi38-242">// incidental, indirect, punitive or consequential damages, even if the possibility of</span>
+<span class="ansi38-242">// costs, losses or damages could normally have been foreseen.</span>
+<span class="ansi38-203">CrossIndustryInvoice</span><span class="ansi38-231">(</span>
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xs</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/2001/XMLSchema</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">ExchangedDocumentContext</span>

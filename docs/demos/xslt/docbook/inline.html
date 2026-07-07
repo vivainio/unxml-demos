@@ -15,6 +15,13 @@
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:suwl</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xlink</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/1999/xlink</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
 <span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xsl</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/1999/XSL/Transform</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
+<span class="ansi38-242">  // ********************************************************************</span>
+<span class="ansi38-242">  //</span>
+<span class="ansi38-242">  // This file is part of the XSL DocBook Stylesheet distribution.</span>
+<span class="ansi38-242">  // See ../README or http://cdn.docbook.org/release/xsl/current/ for</span>
+<span class="ansi38-242">  // copyright and other information.</span>
+<span class="ansi38-242">  //</span>
+<span class="ansi38-242">  // ********************************************************************</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">key</span><span class="ansi38-231">(</span><span class="ansi38-149">match</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">d:glossentry</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">glossentries</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">use</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">normalize-space(d:glossterm)</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">key</span><span class="ansi38-231">(</span><span class="ansi38-149">match</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">d:glossentry</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">name</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">glossentries</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">use</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">normalize-space(d:glossterm/@baseform)</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
@@ -23,6 +30,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> linkend </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $node/</span><span class="ansi38-208">@linkend</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> xhref </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $node/</span><span class="ansi38-208">@xlink:href</span>
+<span class="ansi38-242">    // check for nested links, which are undefined in the output</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> ($</span><span class="ansi38-208">linkend</span><span class="ansi38-231"> </span><span class="ansi38-203">or</span><span class="ansi38-231"> $</span><span class="ansi38-208">xhref</span><span class="ansi38-231">) </span><span class="ansi38-203">and</span><span class="ansi38-231"> $</span><span class="ansi38-208">node</span><span class="ansi38-231">/</span><span class="ansi38-208">ancestor::</span><span class="ansi38-203">*</span><span class="ansi38-231">[</span><span class="ansi38-208">@xlink:href</span><span class="ansi38-231"> </span><span class="ansi38-203">or</span><span class="ansi38-231"> </span><span class="ansi38-208">@linkend</span><span class="ansi38-231">]</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">message</span>
 <span class="ansi38-231">        </span><span class="ansi38-186">"</span><span class="ansi38-186">WARNING: nested link may be undefined in output:</span><span class="ansi38-186">"</span>
@@ -39,6 +47,7 @@
 <span class="ansi38-231">            </span><span class="ansi38-186">"</span><span class="ansi38-186">'&gt;</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">        </span><span class="ansi38-186">"</span><span class="ansi38-186">nested inside parent element</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> </span><span class="ansi38-149">name</span><span class="ansi38-231">($</span><span class="ansi38-208">node</span><span class="ansi38-231">/</span><span class="ansi38-208">parent::</span><span class="ansi38-203">*</span><span class="ansi38-231">)</span>
+<span class="ansi38-242">    // Support for @xlink:show</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">target</span><span class="ansi38-149">.show</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">node</span><span class="ansi38-231">/</span><span class="ansi38-208">@xlink:show</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'new'</span><span class="ansi38-231">:</span>
@@ -51,8 +60,11 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">xhref</span><span class="ansi38-231"> </span><span class="ansi38-203">and</span>
 <span class="ansi38-231">                      </span><span class="ansi38-231">(</span><span class="ansi38-141">not</span><span class="ansi38-231">($</span><span class="ansi38-141">node</span><span class="ansi38-231">/@</span><span class="ansi38-141">xlink:type</span><span class="ansi38-231">)</span><span class="ansi38-231"> or</span>
 <span class="ansi38-231">                           $node/</span><span class="ansi38-208">@xlink:type</span><span class="ansi38-203">=</span><span class="ansi38-231">'simple'):</span>
+<span class="ansi38-242">          // Is it a local idref or a uri?</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">is</span><span class="ansi38-149">.idref</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">            </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">              // if the href starts with # and does not contain an "("</span>
+<span class="ansi38-242">              // or if the href starts with #xpointer(id(, it's just an ID</span>
 <span class="ansi38-231">              </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-149">starts-with</span><span class="ansi38-231">($</span><span class="ansi38-208">xhref</span><span class="ansi38-231">,</span><span class="ansi38-186">'#'</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">                            </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-141">not</span><span class="ansi38-231">(</span><span class="ansi38-141">contains</span><span class="ansi38-231">($</span><span class="ansi38-141">xhref</span><span class="ansi38-231">,</span><span class="ansi38-186">'('</span><span class="ansi38-231">)</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">                            </span><span class="ansi38-203">or</span><span class="ansi38-231"> starts-with</span><span class="ansi38-231">(</span><span class="ansi38-231">$</span><span class="ansi38-141">xhref</span><span class="ansi38-231">,</span>
@@ -60,8 +72,11 @@
 <span class="ansi38-231">                </span><span class="ansi38-186">"</span><span class="ansi38-186">1</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">              </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">                </span><span class="ansi38-186">"</span><span class="ansi38-186">0</span><span class="ansi38-186">"</span>
+<span class="ansi38-242">          // Is it an olink ?</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">is</span><span class="ansi38-149">.olink</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">            </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">              // If xlink:role="http://docbook.org/xlink/role/olink"</span>
+<span class="ansi38-242">              // and if the href contains #</span>
 <span class="ansi38-231">              </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-149">contains</span><span class="ansi38-231">($</span><span class="ansi38-208">xhref</span><span class="ansi38-231">,</span><span class="ansi38-186">'#'</span><span class="ansi38-231">) </span><span class="ansi38-203">and</span>
 <span class="ansi38-231">                 </span><span class="ansi38-208">@xlink:role</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> $xolink.role:</span>
 <span class="ansi38-231">                </span><span class="ansi38-186">"</span><span class="ansi38-186">1</span><span class="ansi38-186">"</span>
@@ -88,6 +103,10 @@
 <span class="ansi38-231">                </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">                  </span><span class="ansi38-203">a</span>
 <span class="ansi38-231">                    </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
+<span class="ansi38-242">                    // id attribute goes on the element calling</span>
+<span class="ansi38-242">                    // simple.xlink, not on the anchor element, so</span>
+<span class="ansi38-242">                    // this is commented out:</span>
+<span class="ansi38-242">                    // &lt;xsl:call-template name="id.attribute"/&gt;</span>
 <span class="ansi38-231">                    </span><span class="ansi38-208">@href</span>
 <span class="ansi38-231">                      </span><span class="ansi38-203">call</span><span class="ansi38-231"> href.target</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">                        </span><span class="ansi38-203">object</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $target</span>
@@ -101,6 +120,7 @@
 <span class="ansi38-231">                      </span><span class="ansi38-208">@target</span>
 <span class="ansi38-231">                        </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> $</span><span class="ansi38-208">target.show</span>
 <span class="ansi38-231">                    </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-242">            // otherwise it's a URI</span>
 <span class="ansi38-231">            </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">              </span><span class="ansi38-203">a</span>
 <span class="ansi38-231">                </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
@@ -110,6 +130,7 @@
 <span class="ansi38-231">                </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">node</span><span class="ansi38-231">/</span><span class="ansi38-208">@xlink:title:</span>
 <span class="ansi38-231">                  </span><span class="ansi38-208">@title</span>
 <span class="ansi38-231">                    </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> $</span><span class="ansi38-208">node</span><span class="ansi38-231">/</span><span class="ansi38-208">@xlink:title</span>
+<span class="ansi38-242">                // For URIs, use @xlink:show if defined, otherwise use ulink.target</span>
 <span class="ansi38-231">                </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">                  </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">target.show</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-186">''</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">                    </span><span class="ansi38-208">@target</span>
@@ -145,6 +166,9 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-242">    // * if you want output from the inline.charseq template wrapped in</span>
+<span class="ansi38-242">    // * something other than a Span, call the template with some value</span>
+<span class="ansi38-242">    // * for the 'wrapper-name' param</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> wrapper-name </span><span class="ansi38-203">:=</span><span class="ansi38-231"> span</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">element</span><span class="ansi38-231"> {$wrapper-name}</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> common.html.attributes</span>
@@ -174,6 +198,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
+<span class="ansi38-242">      // don't put &lt;strong&gt; inside figure, example, or table titles</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-149">local-name</span><span class="ansi38-231">(..) </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'title'</span>
 <span class="ansi38-231">                      </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-141">local-name</span><span class="ansi38-231">(</span><span class="ansi38-141">..</span><span class="ansi38-231">/</span><span class="ansi38-141">..</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 'figure'</span>
@@ -203,6 +228,8 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> anchor</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> simple.xlink</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $content</span>
+<span class="ansi38-242">    // don't put &lt;strong&gt; inside figure, example, or table titles</span>
+<span class="ansi38-242">    // or other titles that may already be represented with &lt;strong&gt;'s.</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-149">local-name</span><span class="ansi38-231">(..) </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'title'</span>
 <span class="ansi38-231">                    </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-141">local-name</span><span class="ansi38-231">(</span><span class="ansi38-141">..</span><span class="ansi38-231">/</span><span class="ansi38-141">..</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 'figure'</span>
@@ -264,6 +291,8 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> dir</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> apply-annotations</span>
+<span class="ansi38-242">  // ====================================================================</span>
+<span class="ansi38-242">  // some special cases</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:author</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> person.name</span>
@@ -302,6 +331,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:authorinitials</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:accel</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:action</span><span class="ansi38-231">:</span>
@@ -325,6 +355,7 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:database</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:date</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // should this support locale-specific formatting? how?</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:errorcode</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
@@ -448,6 +479,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> generate.citerefentry.link</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // nop</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> x.generate.citerefentry.link</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-186">"</span><span class="ansi38-186">http://example.com/cgi-bin/man.cgi?</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> </span><span class="ansi38-208">d:refentrytitle</span>
@@ -466,6 +498,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">        // We don't want empty @class values, so do not propagate empty @roles</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-208">@role</span><span class="ansi38-231">  </span><span class="ansi38-203">and</span>
 <span class="ansi38-231">                      </span><span class="ansi38-203">normalize-space</span><span class="ansi38-231">(</span><span class="ansi38-231">@</span><span class="ansi38-141">role</span><span class="ansi38-231">)</span><span class="ansi38-231"> !</span><span class="ansi38-203">=</span><span class="ansi38-231"> '' and</span>
 <span class="ansi38-231">                      $emphasis.propagates.style !</span><span class="ansi38-203">=</span><span class="ansi38-231"> 0:</span>
@@ -477,6 +510,8 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">            </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-208">@role</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'bold'</span><span class="ansi38-231"> </span><span class="ansi38-203">or</span><span class="ansi38-231"> </span><span class="ansi38-208">@role</span><span class="ansi38-203">=</span><span class="ansi38-186">'strong'</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">              // backwards compatibility: make bold into b elements, but</span>
+<span class="ansi38-242">              // don't put bold inside figure, example, or table titles</span>
 <span class="ansi38-231">              </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">                </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-149">local-name</span><span class="ansi38-231">(..) </span><span class="ansi38-203">=</span><span class="ansi38-231"> </span><span class="ansi38-186">'title'</span>
 <span class="ansi38-231">                              </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-141">local-name</span><span class="ansi38-231">(</span><span class="ansi38-141">..</span><span class="ansi38-231">/</span><span class="ansi38-141">..</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 'figure'</span>
@@ -501,6 +536,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">span</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> locale.html.attributes</span>
+<span class="ansi38-242">      // We don't want empty @class values, so do not propagate empty @roles</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">when</span><span class="ansi38-231"> </span><span class="ansi38-208">@role</span><span class="ansi38-231"> </span><span class="ansi38-203">and</span>
 <span class="ansi38-231">                     </span><span class="ansi38-203">normalize-space</span><span class="ansi38-231">(</span><span class="ansi38-231">@</span><span class="ansi38-141">role</span><span class="ansi38-231">)</span><span class="ansi38-231"> !</span><span class="ansi38-203">=</span><span class="ansi38-231"> '' and</span>
@@ -558,6 +594,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> glossterm</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">firstterm</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> 1</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:glossterm</span><span class="ansi38-231">(</span><span class="ansi38-141">firstterm</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // To avoid extra &lt;a name=""&gt; anchor from inline.italicseq</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">content</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
@@ -589,6 +626,8 @@
 <span class="ansi38-231">            </span><span class="ansi38-203">else</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">              </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">cterm</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-141">document</span><span class="ansi38-231">($</span><span class="ansi38-141">glossary.collection</span><span class="ansi38-231">,</span><span class="ansi38-141">.</span><span class="ansi38-231">)</span><span class="ansi38-231">//d:glossentry[d:glossterm</span><span class="ansi38-203">=</span><span class="ansi38-231">$term])[1]</span>
+<span class="ansi38-242">        // HACK HACK HACK! But it works...</span>
+<span class="ansi38-242">        // You'd need to do more work if you wanted to chunk on glossdiv, though</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">glossary</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> //d:glossary[</span><span class="ansi38-208">@role</span><span class="ansi38-203">=</span><span class="ansi38-231">'auto']</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">if</span><span class="ansi38-231"> </span><span class="ansi38-149">count</span><span class="ansi38-231">($</span><span class="ansi38-208">glossary</span><span class="ansi38-231">) </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-141">1</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">          </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">message</span>
@@ -756,6 +795,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:uri</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.monoseq</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:menuchoice</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">shortcut</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> ./d:shortcut</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> process.menuchoice</span>
@@ -764,7 +804,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> $shortcut</span>
 <span class="ansi38-231">      </span><span class="ansi38-186">"</span><span class="ansi38-186">)</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">template</span><span class="ansi38-231"> process.menuchoice</span><span class="ansi38-231">:</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> nodelist </span><span class="ansi38-203">:=</span><span class="ansi38-231"> d:guibutton</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guiicon</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guilabel</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guimenu</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guimenuitem</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guisubmenu</span><span class="ansi38-203">|</span><span class="ansi38-231">d:interface</span>
+<span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> nodelist </span><span class="ansi38-203">:=</span><span class="ansi38-231"> d:guibutton</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guiicon</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guilabel</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guimenu</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guimenuitem</span><span class="ansi38-203">|</span><span class="ansi38-231">d:guisubmenu</span><span class="ansi38-203">|</span><span class="ansi38-231">d:interface // not</span><span class="ansi38-231">(</span><span class="ansi38-141">shortcut</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> count </span><span class="ansi38-203">:=</span><span class="ansi38-231"> 1</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">count</span><span class="ansi38-203">&gt;</span><span class="ansi38-149">count</span><span class="ansi38-231">($</span><span class="ansi38-208">nodelist</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
@@ -785,14 +825,17 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> process.menuchoice</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">nodelist</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $nodelist</span>
 <span class="ansi38-231">          </span><span class="ansi38-203">count</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $count+1</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:optional</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> $</span><span class="ansi38-208">arg.choice.opt.open.str</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">&lt;-</span><span class="ansi38-231"> $</span><span class="ansi38-208">arg.choice.opt.close.str</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:citation</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // todo: integrate with bibliography collection</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">targets</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-231">(</span><span class="ansi38-231">//</span><span class="ansi38-141">d:biblioentry</span><span class="ansi38-231"> | //</span><span class="ansi38-141">d:bibliomixed</span><span class="ansi38-231">)</span><span class="ansi38-231">[d:abbrev </span><span class="ansi38-203">=</span><span class="ansi38-231"> string(current())]</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">target</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $targets[1]</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">      // try automatic linking based on match to abbrev</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">target</span><span class="ansi38-231"> </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-203">not</span><span class="ansi38-231">(</span><span class="ansi38-208">d:xref</span><span class="ansi38-231">) </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-203">not</span><span class="ansi38-231">(</span><span class="ansi38-208">d:link</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-186">"</span><span class="ansi38-186">[</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">a</span>
@@ -815,6 +858,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">targets</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> //*[d:biblioid </span><span class="ansi38-203">=</span><span class="ansi38-231"> string(current())]</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">target</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> $targets[1]</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">choose</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">      // try automatic linking based on match to parent of biblioid</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">when</span><span class="ansi38-231"> $</span><span class="ansi38-208">target</span><span class="ansi38-231"> </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-203">not</span><span class="ansi38-231">(</span><span class="ansi38-208">d:xref</span><span class="ansi38-231">) </span><span class="ansi38-203">and</span><span class="ansi38-231"> </span><span class="ansi38-203">not</span><span class="ansi38-231">(</span><span class="ansi38-208">d:link</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">        </span><span class="ansi38-186">"</span><span class="ansi38-186">[</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">a</span>
@@ -830,6 +874,7 @@
 <span class="ansi38-231">        </span><span class="ansi38-186">"</span><span class="ansi38-186">]</span><span class="ansi38-186">"</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:biblioentry</span><span class="ansi38-203">|</span><span class="ansi38-231">d:bibliomixed </span><span class="ansi38-231">(</span><span class="ansi38-149">mode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">citation</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-242">xsl:</span><span class="ansi38-203">number</span><span class="ansi38-231">(</span><span class="ansi38-149">count</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">d:biblioentry|d:bibliomixed</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">1</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">from</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">d:bibliography</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span><span class="ansi38-231"> </span><span class="ansi38-149">level</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">any</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:comment[&amp;comment.block.parents;]</span><span class="ansi38-203">|</span><span class="ansi38-231">d:remark[&amp;comment.block.parents;]</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">show.comments</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">p</span><span class="ansi38-231">(</span><span class="ansi38-149">class</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">remark</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
@@ -839,6 +884,7 @@
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> $</span><span class="ansi38-208">show.comments</span><span class="ansi38-231"> </span><span class="ansi38-203">!=</span><span class="ansi38-231"> </span><span class="ansi38-141">0</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">em</span>
 <span class="ansi38-231">        </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:productname</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">if</span><span class="ansi38-231"> </span><span class="ansi38-208">@class:</span>
@@ -846,12 +892,15 @@
 <span class="ansi38-231">        </span><span class="ansi38-203">dingbat</span><span class="ansi38-231"> </span><span class="ansi38-203">:=</span><span class="ansi38-231"> </span><span class="ansi38-208">@class</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:productnumber</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:pob</span><span class="ansi38-203">|</span><span class="ansi38-231">d:street</span><span class="ansi38-203">|</span><span class="ansi38-231">d:city</span><span class="ansi38-203">|</span><span class="ansi38-231">d:state</span><span class="ansi38-203">|</span><span class="ansi38-231">d:postcode</span><span class="ansi38-203">|</span><span class="ansi38-231">d:country</span><span class="ansi38-203">|</span><span class="ansi38-231">d:otheraddr</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:phone</span><span class="ansi38-203">|</span><span class="ansi38-231">d:fax</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
+<span class="ansi38-242">  // in Addresses, for example</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:honorific</span><span class="ansi38-203">|</span><span class="ansi38-231">d:firstname</span><span class="ansi38-203">|</span><span class="ansi38-231">d:givenname</span><span class="ansi38-203">|</span><span class="ansi38-231">d:surname</span><span class="ansi38-203">|</span><span class="ansi38-231">d:lineage</span><span class="ansi38-203">|</span><span class="ansi38-231">d:othername</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">call</span><span class="ansi38-231"> inline.charseq</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:person</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> d:personname</span>
@@ -876,6 +925,7 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:org</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">param</span><span class="ansi38-231"> content </span><span class="ansi38-203">:=</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span>
@@ -924,7 +974,11 @@
 <span class="ansi38-231">      </span><span class="ansi38-203">apply</span><span class="ansi38-231"> .</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">call</span><span class="ansi38-231"> id.attribute</span>
 <span class="ansi38-231">      </span><span class="ansi38-203">copy</span><span class="ansi38-231"> $contentwithlink</span>
+<span class="ansi38-242">  // ====================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> d:beginpage</span><span class="ansi38-231">:</span>
+<span class="ansi38-242">    // does nothing; this *is not* markup to force a page break.</span>
+<span class="ansi38-242">  // ====================================================================</span>
+<span class="ansi38-242">  // generate text for xrefs to inline elements</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">match</span><span class="ansi38-231"> &amp;inline.elements; </span><span class="ansi38-231">(</span><span class="ansi38-149">mode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">xref-to</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231">:</span>
 <span class="ansi38-231">    </span><span class="ansi38-203">apply</span>
 </span></pre>

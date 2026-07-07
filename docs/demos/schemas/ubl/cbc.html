@@ -8,12 +8,20 @@
 </head>
 <body>
 <a class="unxml-back" href="../../">← all demos</a>
-<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-203">schema</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2 </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
+<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-242">// Library:           OASIS Universal Business Language (UBL) 2.1 OS</span>
+<span class="ansi38-242">// http://docs.oasis-open.org/ubl/os-UBL-2.1/</span>
+<span class="ansi38-242">// Release Date:      04 November 2013</span>
+<span class="ansi38-242">// Module:            xsd/common/UBL-CommonBasicComponents-2.1.xsd</span>
+<span class="ansi38-242">// Generated on:      2013-10-31 17:17z</span>
+<span class="ansi38-242">// Copyright (c) OASIS Open 2013. All Rights Reserved.</span>
+<span class="ansi38-203">schema</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2 </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">xmlns</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> qdt </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> udt </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2</span>
+<span class="ansi38-242">  // ===== Imports =====</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">import</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2 </span><span class="ansi38-203">from</span><span class="ansi38-231"> </span><span class="ansi38-81">UBL-QualifiedDataTypes-2.1.xsd</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">import</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2 </span><span class="ansi38-203">from</span><span class="ansi38-231"> </span><span class="ansi38-81">UBL-UnqualifiedDataTypes-2.1.xsd</span>
+<span class="ansi38-242">  // ===== Element Declarations =====</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> AcceptedIndicator </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">AcceptedIndicatorType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> AcceptedVariantsDescription </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">AcceptedVariantsDescriptionType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> AccountFormatCode </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">AccountFormatCodeType</span>
@@ -887,6 +895,8 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> WorkPhase </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">WorkPhaseType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> WorkPhaseCode </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">WorkPhaseCodeType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> XPath </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">XPathType</span>
+<span class="ansi38-242">  // ===== Type Definitions =====</span>
+<span class="ansi38-242">  // ===== Basic Business Information Entity Type Definitions =====</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> AcceptedIndicatorType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IndicatorType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> AcceptedVariantsDescriptionType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:TextType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> AccountFormatCodeType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:CodeType</span>
@@ -1760,6 +1770,51 @@
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> WorkPhaseCodeType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:CodeType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> WorkPhaseType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:TextType</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> XPathType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:TextType</span>
+<span class="ansi38-242">// ===== Copyright Notice =====</span>
+<span class="ansi38-242">// OASIS takes no position regarding the validity or scope of any</span>
+<span class="ansi38-242">// intellectual property or other rights that might be claimed to pertain</span>
+<span class="ansi38-242">// to the implementation or use of the technology described in this</span>
+<span class="ansi38-242">// document or the extent to which any license under such rights</span>
+<span class="ansi38-242">// might or might not be available; neither does it represent that it has</span>
+<span class="ansi38-242">// made any effort to identify any such rights. Information on OASIS's</span>
+<span class="ansi38-242">// procedures with respect to rights in OASIS specifications can be</span>
+<span class="ansi38-242">// found at the OASIS website. Copies of claims of rights made</span>
+<span class="ansi38-242">// available for publication and any assurances of licenses to be made</span>
+<span class="ansi38-242">// available, or the result of an attempt made to obtain a general</span>
+<span class="ansi38-242">// license or permission for the use of such proprietary rights by</span>
+<span class="ansi38-242">// implementors or users of this specification, can be obtained from</span>
+<span class="ansi38-242">// the OASIS Executive Director.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// OASIS invites any interested party to bring to its attention any</span>
+<span class="ansi38-242">// copyrights, patents or patent applications, or other proprietary</span>
+<span class="ansi38-242">// rights which may cover technology that may be required to</span>
+<span class="ansi38-242">// implement this specification. Please address the information to the</span>
+<span class="ansi38-242">// OASIS Executive Director.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// This document and translations of it may be copied and furnished to</span>
+<span class="ansi38-242">// others, and derivative works that comment on or otherwise explain</span>
+<span class="ansi38-242">// it or assist in its implementation may be prepared, copied,</span>
+<span class="ansi38-242">// published and distributed, in whole or in part, without restriction of</span>
+<span class="ansi38-242">// any kind, provided that the above copyright notice and this</span>
+<span class="ansi38-242">// paragraph are included on all such copies and derivative works.</span>
+<span class="ansi38-242">// However, this document itself may not be modified in any way,</span>
+<span class="ansi38-242">// such as by removing the copyright notice or references to OASIS,</span>
+<span class="ansi38-242">// except as needed for the purpose of developing OASIS</span>
+<span class="ansi38-242">// specifications, in which case the procedures for copyrights defined</span>
+<span class="ansi38-242">// in the OASIS Intellectual Property Rights document must be</span>
+<span class="ansi38-242">// followed, or as required to translate it into languages other than</span>
+<span class="ansi38-242">// English.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// The limited permissions granted above are perpetual and will not be</span>
+<span class="ansi38-242">// revoked by OASIS or its successors or assigns.</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// This document and the information contained herein is provided on</span>
+<span class="ansi38-242">// an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES,</span>
+<span class="ansi38-242">// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY</span>
+<span class="ansi38-242">// WARRANTY THAT THE USE OF THE INFORMATION HEREIN</span>
+<span class="ansi38-242">// WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED</span>
+<span class="ansi38-242">// WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A</span>
+<span class="ansi38-242">// PARTICULAR PURPOSE.</span>
 </span></pre>
 </body>
 </html>

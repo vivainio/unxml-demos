@@ -8,14 +8,54 @@
 </head>
 <body>
 <a class="unxml-back" href="../../">← all demos</a>
-<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-203">schema</span><span class="ansi38-231"> urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2 </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
+<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-242">// ======================================================================</span>
+<span class="ansi38-242">// ===== CCTS Core Component Type Schema Module =====</span>
+<span class="ansi38-242">// ======================================================================</span>
+<span class="ansi38-242">// Module of Core Component Type</span>
+<span class="ansi38-242">// Agency: UN/CEFACT</span>
+<span class="ansi38-242">// VersionID: 1.1</span>
+<span class="ansi38-242">// Last change: 14 January 2005</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// Copyright (C) UN/CEFACT (2006). All Rights Reserved.</span>
+<span class="ansi38-242">// This document and translations of it may be copied and furnished to others,</span>
+<span class="ansi38-242">// and derivative works that comment on or otherwise explain it or assist</span>
+<span class="ansi38-242">// in its implementation may be prepared, copied, published and distributed,</span>
+<span class="ansi38-242">// in whole or in part, without restriction of any kind, provided that the</span>
+<span class="ansi38-242">// above copyright notice and this paragraph are included on all such copies</span>
+<span class="ansi38-242">// and derivative works. However, this document itself may not be modified in</span>
+<span class="ansi38-242">// any way, such as by removing the copyright notice or references to</span>
+<span class="ansi38-242">// UN/CEFACT, except as needed for the purpose of developing UN/CEFACT</span>
+<span class="ansi38-242">// specifications, in which case the procedures for copyrights defined in the</span>
+<span class="ansi38-242">// UN/CEFACT Intellectual Property Rights document must be followed, or as</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// required to translate it into languages other than English.</span>
+<span class="ansi38-242">// The limited permissions granted above are perpetual and will not be revoked</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">//</span>
+<span class="ansi38-242">// by UN/CEFACT or its successors or assigns.</span>
+<span class="ansi38-242">// This document and the information contained herein is provided on an "AS IS"</span>
+<span class="ansi38-242">// basis and UN/CEFACT DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING</span>
+<span class="ansi38-242">// BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL</span>
+<span class="ansi38-242">// NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR</span>
+<span class="ansi38-242">// FITNESS FOR A PARTICULAR PURPOSE.</span>
+<span class="ansi38-203">schema</span><span class="ansi38-231"> urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2 </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> cct </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> ccts </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:un:unece:uncefact:documentation:2</span>
+<span class="ansi38-242">  // ===== Type Definitions =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
+<span class="ansi38-242">  // ===== CCT: AmountType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> AmountType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:decimal</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@currencyID</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-242">      // The currency of the amount.</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@currencyCodeListVersionID</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-242">      // The VersionID of the UN/ECE Rec9 code list.</span>
+<span class="ansi38-242">  // ===== CCT: BinaryObjectType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> BinaryObjectType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:base64Binary</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@format</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-242">      // The format of the binary content.</span>
@@ -29,6 +69,8 @@
 <span class="ansi38-242">      // The Uniform Resource Identifier that identifies where the binary object is located.</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@filename</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-242">      // The filename of the binary object.</span>
+<span class="ansi38-242">  // ===== CCT: CodeType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> CodeType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@listID</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-242">      // The identification of a list of codes.</span>
@@ -48,9 +90,13 @@
 <span class="ansi38-242">      // The Uniform Resource Identifier that identifies where the code list is located.</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@listSchemeURI</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:anyURI</span>
 <span class="ansi38-242">      // The Uniform Resource Identifier that identifies where the code list scheme is located.</span>
+<span class="ansi38-242">  // ===== CCT: DateTimeType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> DateTimeType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@format</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-242">      // The format of the date time content</span>
+<span class="ansi38-242">  // ===== CCT: IdentifierType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> IdentifierType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@schemeID</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-242">      // The identification of the identification scheme.</span>
@@ -66,17 +112,25 @@
 <span class="ansi38-242">      // The Uniform Resource Identifier that identifies where the identification scheme data is located.</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@schemeURI</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:anyURI</span>
 <span class="ansi38-242">      // The Uniform Resource Identifier that identifies where the identification scheme is located.</span>
+<span class="ansi38-242">  // ===== CCT: IndicatorType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> IndicatorType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@format</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-242">      // Whether the indicator is numeric, textual or binary.</span>
+<span class="ansi38-242">  // ===== CCT: MeasureType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> MeasureType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:decimal</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@unitCode</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-242">      // The type of unit of measure.</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@unitCodeListVersionID</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-242">      // The version of the measure unit code list.</span>
+<span class="ansi38-242">  // ===== CCT: NumericType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> NumericType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:decimal</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@format</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-242">      // Whether the number is an integer, decimal, real number or percentage.</span>
+<span class="ansi38-242">  // ===== CCT: QuantityType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> QuantityType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:decimal</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@unitCode</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:normalizedString</span>
 <span class="ansi38-242">      // The unit of the quantity</span>
@@ -86,6 +140,8 @@
 <span class="ansi38-242">      // The identification of the agency that maintains the quantity unit code list</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@unitCodeListAgencyName</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-242">      // The name of the agency which maintains the quantity unit code list.</span>
+<span class="ansi38-242">  // ===== CCT: TextType =====</span>
+<span class="ansi38-242">  // ===================================================================</span>
 <span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> TextType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:string</span>
 <span class="ansi38-231">    </span><span class="ansi38-208">@languageID</span><span class="ansi38-231"> </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">xsd:language</span>
 <span class="ansi38-242">      // The identifier of the language used in the content component.</span>
