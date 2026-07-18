@@ -8,305 +8,305 @@
 </head>
 <body>
 <a class="unxml-back" href="../../">← all demos</a>
-<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-242">// English disclaimer below.</span>
-<span class="ansi38-242">// Nutzungsrechte</span>
-<span class="ansi38-242">// ZUGFeRD Datenformat Version 2.3.0, 18.09.2024</span>
-<span class="ansi38-242">// Beispiel Version 18.09.2024</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// Zweck des Forums elektronisch Rechnung Deutschland, welches am 31. März 2010 unter der Arbeitsgemeinschaft für</span>
-<span class="ansi38-242">// wirtschaftliche Verwaltung e. V. gegründet wurde, ist u. a. die Schaffung und Spezifizierung eines offenen Datenformats</span>
-<span class="ansi38-242">// für strukturierten elektronischen Datenaustausch auf der Grundlage offener und nicht diskriminierender, standardisierter</span>
-<span class="ansi38-242">// Technologien („ZUGFeRD Datenformat“).</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// Das ZUGFeRD Datenformat wird nach Maßgabe des FeRD sowohl Unternehmen als auch der öffentlichen Verwaltung</span>
-<span class="ansi38-242">// frei zugänglich gemacht. Hierfür bietet FeRD allen Unternehmen und Organisationen der öffentlichen Verwaltung eine</span>
-<span class="ansi38-242">// Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD-Datenformats zu fairen, sachgerechten und nicht</span>
-<span class="ansi38-242">// diskriminierenden Bedingungen an.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// Die Spezifikation des FeRD zur Implementierung des ZUGFeRD Datenformats ist in ihrer jeweils geltenden Fassung</span>
-<span class="ansi38-242">// abrufbar unter www.ferd-net.de.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// Im Einzelnen schließt die Nutzungsgewährung ein:</span>
-<span class="ansi38-242">// =====================================</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// FeRD räumt eine Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD Datenformats in der jeweils</span>
-<span class="ansi38-242">// geltenden und akzeptierten Fassung (www.ferd-net.de) ein.</span>
-<span class="ansi38-242">// Die Lizenz beinhaltet ein unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung,</span>
-<span class="ansi38-242">// Weiterbearbeitung und Verbindung mit anderen Produkten.</span>
-<span class="ansi38-242">// Die Lizenz gilt insbesondere für die Entwicklung, die Gestaltung, die Herstellung, den Verkauf, die Nutzung oder</span>
-<span class="ansi38-242">// anderweitige Verwendung des ZUGFeRD Datenformats für Hardware- und/oder Softwareprodukte sowie sonstige</span>
-<span class="ansi38-242">// Anwendungen und Dienste.</span>
-<span class="ansi38-242">// Diese Lizenz schließt nicht die wesentlichen Patente der Mitglieder von FeRD ein. Als wesentliche Patente sind Patente</span>
-<span class="ansi38-242">// und Patentanmeldungen weltweit zu verstehen, die einen oder mehrere Patentansprüche beinhalten, bei denen es sich um</span>
-<span class="ansi38-242">// notwendige Ansprüche handelt. Notwendige Ansprüche sind lediglich jene Ansprüche der Wesentlichen Patente, die durch</span>
-<span class="ansi38-242">// die Implementierung des ZUGFeRD Datenformats notwendigerweise verletzt würden.</span>
-<span class="ansi38-242">// Der Lizenznehmer ist berechtigt, seinen jeweiligen Konzerngesellschaften ein unbefristetes, weltweites, nicht übertragbares,</span>
-<span class="ansi38-242">// unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung, Weiterbearbeitung und Verbindung mit</span>
-<span class="ansi38-242">// anderen Produkten einzuräumen.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// Die Lizenz wird kostenfrei zur Verfügung gestellt.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// Außer im Falle vorsätzlichen Verschuldens oder grober Fahrlässigkeit haftet FeRD weder für Nutzungsausfall, entgangenen</span>
-<span class="ansi38-242">// Gewinn, Datenverlust, Kommunikationsverlust, Einnahmeausfall, Vertragseinbußen, Geschäftsausfall oder für Kosten,</span>
-<span class="ansi38-242">// Schäden, Verluste oder Haftpflichten im Zusammenhang mit einer Unterbrechung der Geschäftstätigkeit, noch für konkrete,</span>
-<span class="ansi38-242">// beiläufig entstandene, mittelbare Schäden, Straf- oder Folgeschäden und zwar auch dann nicht, wenn die Möglichkeit der</span>
-<span class="ansi38-242">// Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können.</span>
-<span class="ansi38-242">// Right of use</span>
-<span class="ansi38-242">// ZUGFeRD Data format version 2.3.0, September 18th, 2024</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// The purpose of the Forum elektronische Rechnung Deutschland (FeRD), which was founded on March 31, 2010 under the</span>
-<span class="ansi38-242">// umbrella of Arbeitsgemeinschaft für wirtschaftliche Verwaltung e. V., is, among other things, to create and specify an</span>
-<span class="ansi38-242">// open data format for structured electronic data exchange on the basis of open and non discriminatory, standardised</span>
-<span class="ansi38-242">// technologies ("ZUGFeRD data format").</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// The ZUGFeRD data format is used by both companies and public administration according to the FeRD</span>
-<span class="ansi38-242">// made freely accessible. For this purpose FeRD offers all companies and organisations of the public administration a</span>
-<span class="ansi38-242">// License to use the copyrighted ZUGFeRD data format in a fair, appropriate and non</span>
-<span class="ansi38-242">// discriminatory conditions.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// The specification of the FeRD for the implementation of the ZUGFeRD data format is, in its currently valid version</span>
-<span class="ansi38-242">// available at www.ferd-net.de.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// In detail, the grant of use includes</span>
-<span class="ansi38-242">// =====================================</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// FeRD grants a license for the use of the copyrighted ZUGFeRD data format in the respective</span>
-<span class="ansi38-242">// valid and accepted version (www.ferd-net.de).</span>
-<span class="ansi38-242">// The license includes an irrevocable right of use including the right of further development,</span>
-<span class="ansi38-242">// Further processing and connection with other products.</span>
-<span class="ansi38-242">// The license applies in particular to the development, design, production, sale, use or</span>
-<span class="ansi38-242">// other use of the ZUGFeRD data format for hardware and/or software products and other</span>
-<span class="ansi38-242">// applications and services.</span>
-<span class="ansi38-242">// This license does not include the essential patents of the members of FeRD. The essential patents are patents</span>
-<span class="ansi38-242">// and patent applications worldwide which contain one or more claims that are</span>
-<span class="ansi38-242">// necessary claims. Necessary claims are only those claims of the essential patents which are</span>
-<span class="ansi38-242">// the implementation of the ZUGFeRD data format would necessarily be violated.</span>
-<span class="ansi38-242">// The Licensee is entitled to provide its respective group companies with an unlimited, worldwide, non-transferable,</span>
-<span class="ansi38-242">// irrevocable right of use including the right of further development, further processing and connection with</span>
-<span class="ansi38-242">// other products.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// The license is provided free of charge.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// Except in the case of intentional fault or gross negligence, FeRD is not liable for loss of use, loss of</span>
-<span class="ansi38-242">// Profit, loss of data, loss of communication, loss of revenue, loss of contracts, loss of business or for costs</span>
-<span class="ansi38-242">// damages, losses or liabilities in connection with an interruption of business, nor for concrete,</span>
-<span class="ansi38-242">// incidental, indirect, punitive or consequential damages, even if the possibility of</span>
-<span class="ansi38-242">// costs, losses or damages could normally have been foreseen.</span>
-<span class="ansi38-203">CrossIndustryInvoice</span><span class="ansi38-231">(</span>
-<span class="ansi38-231">    </span><span class="ansi38-149">xmlns</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100</span><span class="ansi38-186">"</span><span class="ansi38-231">,</span>
-<span class="ansi38-231">    </span><span class="ansi38-149">xmlns:xs</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">http://www.w3.org/2001/XMLSchema</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">ExchangedDocumentContext</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">TestIndicator</span><span class="ansi38-231">/</span><span class="ansi38-203">Indicator</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> true</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">GuidelineSpecifiedDocumentContextParameter</span><span class="ansi38-231">/</span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">ExchangedDocument</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> KR87654321012</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> KOSTENRECHNUNG</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 380</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IssueDateTime</span><span class="ansi38-231">/</span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241115</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">ContentCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> ST3</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Es bestehen Rabatt- oder Bonusvereinbarungen.</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SubjectCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> AAK</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">ContentCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> EEV</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Der Verkäufer bleibt Eigentümer der Waren bis zur vollständigen Erfüllung der Kaufpreisforderung.</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SubjectCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> AAJ</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedNote</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">Content</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> MUSTERLIEFERANT GMBH</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> BAHNHOFSTRASSE 99</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> 99199 MUSTERHAUSEN</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> Geschäftsführung:</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> Max Mustermann</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> USt-IdNr</span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">DE123456789</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> Telefon: +49 932 431 0</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> www.musterlieferant.de</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> HRB Nr. 372876</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> Amtsgericht Musterstadt</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">|</span><span class="ansi38-231"> GLN 4304171000002</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SubjectCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> REG</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">SupplyChainTradeTransaction</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedSupplyChainTradeLineItem</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">AssociatedDocumentLineDocument</span><span class="ansi38-231">/</span><span class="ansi38-203">LineID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeProduct</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4123456000014</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SellerAssignedID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> WA997</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Wirkarbeit HT</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableProductCharacteristic</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Zählpunkt</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">Value</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE0001346484600000000000000100038</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeAgreement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GrossPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0520</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">NetPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0520</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeDelivery</span><span class="ansi38-231">/</span><span class="ansi38-203">BilledQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">KWH</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1000.0000</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeSettlement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradeTax</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTradeSettlementLineMonetarySummation</span><span class="ansi38-231">/</span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 52.00</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedSupplyChainTradeLineItem</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">AssociatedDocumentLineDocument</span><span class="ansi38-231">/</span><span class="ansi38-203">LineID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 2</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeProduct</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4123456000021</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SellerAssignedID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> ÖST250</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Ökosteuer Lieferant</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeAgreement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GrossPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0205</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">NetPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0205</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeDelivery</span><span class="ansi38-231">/</span><span class="ansi38-203">BilledQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">KWH</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1000.0000</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeSettlement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradeTax</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTradeSettlementLineMonetarySummation</span><span class="ansi38-231">/</span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20.50</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedSupplyChainTradeLineItem</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">AssociatedDocumentLineDocument</span><span class="ansi38-231">/</span><span class="ansi38-203">LineID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 3</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeProduct</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4260331811362</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Kommissionierer 1250032 D. Muster</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Besteller: Hr. Mayer, Personalnr. 4488</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeAgreement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GrossPriceProductTradePrice</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 15.0000</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">AppliedTradeAllowanceCharge</span>
-<span class="ansi38-231">            </span><span class="ansi38-203">ChargeIndicator</span><span class="ansi38-231">/</span><span class="ansi38-203">Indicator</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> false</span>
-<span class="ansi38-231">            </span><span class="ansi38-203">ActualAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4.50</span>
-<span class="ansi38-231">            </span><span class="ansi38-203">Reason</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Artikelrabatt 1</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">NetPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 10.5000</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeDelivery</span><span class="ansi38-231">/</span><span class="ansi38-203">BilledQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">HUR</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 27.5000</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeSettlement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradeTax</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTradeSettlementLineMonetarySummation</span><span class="ansi38-231">/</span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 288.75</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedSupplyChainTradeLineItem</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">AssociatedDocumentLineDocument</span><span class="ansi38-231">/</span><span class="ansi38-203">LineID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeProduct</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 2001015001325</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SellerAssignedID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> FB05</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> FALTENBEUTEL 16x6x28 CM</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeAgreement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GrossPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0105</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">NetPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0105</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeDelivery</span><span class="ansi38-231">/</span><span class="ansi38-203">BilledQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">H87</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 3500.0000</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeSettlement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradeTax</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTradeSettlementLineMonetarySummation</span><span class="ansi38-231">/</span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 36.75</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">IncludedSupplyChainTradeLineItem</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">AssociatedDocumentLineDocument</span><span class="ansi38-231">/</span><span class="ansi38-203">LineID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 5</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeProduct</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4123456000038</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SellerAssignedID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> KOP05</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Kopierpapier A4</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Zählerstand von-bis: 543210 - 544420</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableProductCharacteristic</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Zähler-Nr.</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">Value</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> MG-X79318</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeAgreement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GrossPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0100</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">NetPriceProductTradePrice</span><span class="ansi38-231">/</span><span class="ansi38-203">ChargeAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.0100</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeDelivery</span><span class="ansi38-231">/</span><span class="ansi38-203">BilledQuantity</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">H87</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 1210.0000</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLineTradeSettlement</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradeTax</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTradeSettlementLineMonetarySummation</span><span class="ansi38-231">/</span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 12.10</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeAgreement</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SellerTradeParty</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 549910</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4333741000005</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> MUSTERLIEFERANT GMBH</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">DefinedTradeContact</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TelephoneUniversalCommunication</span><span class="ansi38-231">/</span><span class="ansi38-203">CompleteNumber</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> +49 932 431 500</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">EmailURIUniversalCommunication</span><span class="ansi38-231">/</span><span class="ansi38-203">URIID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> max.mustermann@musterlieferant.de</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 99199</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> BAHNHOFSTRASSE 99</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> MUSTERHAUSEN</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">SpecifiedTaxRegistration</span><span class="ansi38-231">/</span><span class="ansi38-203">ID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">FC</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 201/113/40209</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">BuyerTradeParty</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 339420</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4304171000002</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> MUSTER-KUNDE GMBH</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 40235</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> KUNDENWEG 88</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DUESSELDORF</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">AdditionalReferencedDocument</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">IssuerAssignedID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> A777123</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 130</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeDelivery</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">ShipToTradeParty</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4304171088093</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> MUSTER-MARKT</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">DefinedTradeContact</span><span class="ansi38-231">/</span><span class="ansi38-203">DepartmentName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 7322</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 31157</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> HAUPTSTRASSE 44</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> SARSTEDT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">ActualDeliverySupplyChainEvent</span><span class="ansi38-231">/</span><span class="ansi38-203">OccurrenceDateTime</span><span class="ansi38-231">/</span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241030</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">DeliveryNoteReferencedDocument</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">IssuerAssignedID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> L87654321012</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">FormattedIssueDateTime</span><span class="ansi38-231">/</span><span class="ansi38-203">DateTimeString</span><span class="ansi38-231">(</span><span class="ansi38-149">format</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">102</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 20241031</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ApplicableHeaderTradeSettlement</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">InvoiceCurrencyCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> EUR</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">InvoiceeTradeParty</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 339420</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GlobalID</span><span class="ansi38-231">(</span><span class="ansi38-149">schemeID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">0088</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 4304171000002</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Name</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> MUSTER-KUNDE GMBH</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">PostalTradeAddress</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">PostcodeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 40235</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">LineOne</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> KUNDENWEG 88</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CityName</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DUESSELDORF</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CountryID</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> DE</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">ApplicableTradeTax</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">CalculatedAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 76.67</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">BasisAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 403.55</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">LineTotalBasisAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 410.10</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">AllowanceChargeBasisAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> -6.55</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeAllowanceCharge</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ChargeIndicator</span><span class="ansi38-231">/</span><span class="ansi38-203">Indicator</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> false</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">BasisAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 410.10</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ActualAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 21.55</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Reason</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Sonderrabatt</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">CategoryTradeTax</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedLogisticsServiceCharge</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Transportkosten: Frachbetrag</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">AppliedAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 15.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">AppliedTradeTax</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">TypeCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> VAT</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CategoryCode</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> S</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">RateApplicablePercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 19.00</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradePaymentTerms</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">Description</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ApplicableTradePaymentDiscountTerms</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">BasisPeriodMeasure</span><span class="ansi38-231">(</span><span class="ansi38-149">unitCode</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">DAY</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 10</span>
-<span class="ansi38-231">          </span><span class="ansi38-203">CalculationPercent</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 2.00</span>
-<span class="ansi38-231">      </span><span class="ansi38-203">SpecifiedTradeSettlementHeaderMonetarySummation</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">LineTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 410.10</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">ChargeTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 15.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">AllowanceTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 21.55</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">TaxBasisTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 403.55</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">TaxTotalAmount</span><span class="ansi38-231">(</span><span class="ansi38-149">currencyID</span><span class="ansi38-203">=</span><span class="ansi38-186">"</span><span class="ansi38-186">EUR</span><span class="ansi38-186">"</span><span class="ansi38-231">)</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 76.67</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">GrandTotalAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 480.22</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">TotalPrepaidAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 0.00</span>
-<span class="ansi38-231">        </span><span class="ansi38-203">DuePayableAmount</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> 480.22</span>
+<pre class="unxml"><span class="source unxml"><span class="comment line unxml">// English disclaimer below.</span>
+<span class="comment line unxml">// Nutzungsrechte</span>
+<span class="comment line unxml">// ZUGFeRD Datenformat Version 2.3.0, 18.09.2024</span>
+<span class="comment line unxml">// Beispiel Version 18.09.2024</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// Zweck des Forums elektronisch Rechnung Deutschland, welches am 31. März 2010 unter der Arbeitsgemeinschaft für</span>
+<span class="comment line unxml">// wirtschaftliche Verwaltung e. V. gegründet wurde, ist u. a. die Schaffung und Spezifizierung eines offenen Datenformats</span>
+<span class="comment line unxml">// für strukturierten elektronischen Datenaustausch auf der Grundlage offener und nicht diskriminierender, standardisierter</span>
+<span class="comment line unxml">// Technologien („ZUGFeRD Datenformat“).</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// Das ZUGFeRD Datenformat wird nach Maßgabe des FeRD sowohl Unternehmen als auch der öffentlichen Verwaltung</span>
+<span class="comment line unxml">// frei zugänglich gemacht. Hierfür bietet FeRD allen Unternehmen und Organisationen der öffentlichen Verwaltung eine</span>
+<span class="comment line unxml">// Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD-Datenformats zu fairen, sachgerechten und nicht</span>
+<span class="comment line unxml">// diskriminierenden Bedingungen an.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// Die Spezifikation des FeRD zur Implementierung des ZUGFeRD Datenformats ist in ihrer jeweils geltenden Fassung</span>
+<span class="comment line unxml">// abrufbar unter www.ferd-net.de.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// Im Einzelnen schließt die Nutzungsgewährung ein:</span>
+<span class="comment line unxml">// =====================================</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// FeRD räumt eine Lizenz für die Nutzung des urheberrechtlich geschützten ZUGFeRD Datenformats in der jeweils</span>
+<span class="comment line unxml">// geltenden und akzeptierten Fassung (www.ferd-net.de) ein.</span>
+<span class="comment line unxml">// Die Lizenz beinhaltet ein unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung,</span>
+<span class="comment line unxml">// Weiterbearbeitung und Verbindung mit anderen Produkten.</span>
+<span class="comment line unxml">// Die Lizenz gilt insbesondere für die Entwicklung, die Gestaltung, die Herstellung, den Verkauf, die Nutzung oder</span>
+<span class="comment line unxml">// anderweitige Verwendung des ZUGFeRD Datenformats für Hardware- und/oder Softwareprodukte sowie sonstige</span>
+<span class="comment line unxml">// Anwendungen und Dienste.</span>
+<span class="comment line unxml">// Diese Lizenz schließt nicht die wesentlichen Patente der Mitglieder von FeRD ein. Als wesentliche Patente sind Patente</span>
+<span class="comment line unxml">// und Patentanmeldungen weltweit zu verstehen, die einen oder mehrere Patentansprüche beinhalten, bei denen es sich um</span>
+<span class="comment line unxml">// notwendige Ansprüche handelt. Notwendige Ansprüche sind lediglich jene Ansprüche der Wesentlichen Patente, die durch</span>
+<span class="comment line unxml">// die Implementierung des ZUGFeRD Datenformats notwendigerweise verletzt würden.</span>
+<span class="comment line unxml">// Der Lizenznehmer ist berechtigt, seinen jeweiligen Konzerngesellschaften ein unbefristetes, weltweites, nicht übertragbares,</span>
+<span class="comment line unxml">// unwiderrufliches Nutzungsrecht einschließlich des Rechts der Weiterentwicklung, Weiterbearbeitung und Verbindung mit</span>
+<span class="comment line unxml">// anderen Produkten einzuräumen.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// Die Lizenz wird kostenfrei zur Verfügung gestellt.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// Außer im Falle vorsätzlichen Verschuldens oder grober Fahrlässigkeit haftet FeRD weder für Nutzungsausfall, entgangenen</span>
+<span class="comment line unxml">// Gewinn, Datenverlust, Kommunikationsverlust, Einnahmeausfall, Vertragseinbußen, Geschäftsausfall oder für Kosten,</span>
+<span class="comment line unxml">// Schäden, Verluste oder Haftpflichten im Zusammenhang mit einer Unterbrechung der Geschäftstätigkeit, noch für konkrete,</span>
+<span class="comment line unxml">// beiläufig entstandene, mittelbare Schäden, Straf- oder Folgeschäden und zwar auch dann nicht, wenn die Möglichkeit der</span>
+<span class="comment line unxml">// Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können.</span>
+<span class="comment line unxml">// Right of use</span>
+<span class="comment line unxml">// ZUGFeRD Data format version 2.3.0, September 18th, 2024</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// The purpose of the Forum elektronische Rechnung Deutschland (FeRD), which was founded on March 31, 2010 under the</span>
+<span class="comment line unxml">// umbrella of Arbeitsgemeinschaft für wirtschaftliche Verwaltung e. V., is, among other things, to create and specify an</span>
+<span class="comment line unxml">// open data format for structured electronic data exchange on the basis of open and non discriminatory, standardised</span>
+<span class="comment line unxml">// technologies (&quot;ZUGFeRD data format&quot;).</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// The ZUGFeRD data format is used by both companies and public administration according to the FeRD</span>
+<span class="comment line unxml">// made freely accessible. For this purpose FeRD offers all companies and organisations of the public administration a</span>
+<span class="comment line unxml">// License to use the copyrighted ZUGFeRD data format in a fair, appropriate and non</span>
+<span class="comment line unxml">// discriminatory conditions.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// The specification of the FeRD for the implementation of the ZUGFeRD data format is, in its currently valid version</span>
+<span class="comment line unxml">// available at www.ferd-net.de.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// In detail, the grant of use includes</span>
+<span class="comment line unxml">// =====================================</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// FeRD grants a license for the use of the copyrighted ZUGFeRD data format in the respective</span>
+<span class="comment line unxml">// valid and accepted version (www.ferd-net.de).</span>
+<span class="comment line unxml">// The license includes an irrevocable right of use including the right of further development,</span>
+<span class="comment line unxml">// Further processing and connection with other products.</span>
+<span class="comment line unxml">// The license applies in particular to the development, design, production, sale, use or</span>
+<span class="comment line unxml">// other use of the ZUGFeRD data format for hardware and/or software products and other</span>
+<span class="comment line unxml">// applications and services.</span>
+<span class="comment line unxml">// This license does not include the essential patents of the members of FeRD. The essential patents are patents</span>
+<span class="comment line unxml">// and patent applications worldwide which contain one or more claims that are</span>
+<span class="comment line unxml">// necessary claims. Necessary claims are only those claims of the essential patents which are</span>
+<span class="comment line unxml">// the implementation of the ZUGFeRD data format would necessarily be violated.</span>
+<span class="comment line unxml">// The Licensee is entitled to provide its respective group companies with an unlimited, worldwide, non-transferable,</span>
+<span class="comment line unxml">// irrevocable right of use including the right of further development, further processing and connection with</span>
+<span class="comment line unxml">// other products.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// The license is provided free of charge.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// Except in the case of intentional fault or gross negligence, FeRD is not liable for loss of use, loss of</span>
+<span class="comment line unxml">// Profit, loss of data, loss of communication, loss of revenue, loss of contracts, loss of business or for costs</span>
+<span class="comment line unxml">// damages, losses or liabilities in connection with an interruption of business, nor for concrete,</span>
+<span class="comment line unxml">// incidental, indirect, punitive or consequential damages, even if the possibility of</span>
+<span class="comment line unxml">// costs, losses or damages could normally have been foreseen.</span>
+<span class="entity name tag unxml">CrossIndustryInvoice</span><span class="punctuation section parens begin unxml">(</span>
+    <span class="entity other attribute-name unxml">xmlns</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation separator unxml">,</span>
+    <span class="entity other attribute-name unxml">xmlns:xs</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>http://www.w3.org/2001/XMLSchema<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span>
+  <span class="entity name tag unxml">ExchangedDocumentContext</span>
+    <span class="entity name tag unxml">TestIndicator</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">Indicator</span> <span class="keyword operator assignment unxml">=</span> true
+    <span class="entity name tag unxml">GuidelineSpecifiedDocumentContextParameter</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ID</span> <span class="keyword operator assignment unxml">=</span> urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended
+  <span class="entity name tag unxml">ExchangedDocument</span>
+    <span class="entity name tag unxml">ID</span> <span class="keyword operator assignment unxml">=</span> KR87654321012
+    <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> KOSTENRECHNUNG
+    <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> 380
+    <span class="entity name tag unxml">IssueDateTime</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">DateTimeString</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">format</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>102<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 20241115
+    <span class="entity name tag unxml">IncludedNote</span>
+      <span class="entity name tag unxml">ContentCode</span> <span class="keyword operator assignment unxml">=</span> ST3
+      <span class="entity name tag unxml">Content</span> <span class="keyword operator assignment unxml">=</span> Es bestehen Rabatt- oder Bonusvereinbarungen.
+      <span class="entity name tag unxml">SubjectCode</span> <span class="keyword operator assignment unxml">=</span> AAK
+    <span class="entity name tag unxml">IncludedNote</span>
+      <span class="entity name tag unxml">ContentCode</span> <span class="keyword operator assignment unxml">=</span> EEV
+      <span class="entity name tag unxml">Content</span> <span class="keyword operator assignment unxml">=</span> Der Verkäufer bleibt Eigentümer der Waren bis zur vollständigen Erfüllung der Kaufpreisforderung.
+      <span class="entity name tag unxml">SubjectCode</span> <span class="keyword operator assignment unxml">=</span> AAJ
+    <span class="entity name tag unxml">IncludedNote</span>
+      <span class="entity name tag unxml">Content</span> <span class="keyword operator assignment unxml">=</span>
+        <span class="keyword operator unxml">|</span> MUSTERLIEFERANT GMBH
+        <span class="keyword operator unxml">|</span> BAHNHOFSTRASSE 99
+        <span class="keyword operator unxml">|</span> 99199 MUSTERHAUSEN
+        <span class="keyword operator unxml">|</span> Geschäftsführung:
+        <span class="keyword operator unxml">|</span> Max Mustermann
+        <span class="keyword operator unxml">|</span> USt-IdNr<span class="punctuation separator type unxml">:</span> <span class="storage type unxml">DE123456789</span>
+        <span class="keyword operator unxml">|</span> Telefon: +49 932 431 0
+        <span class="keyword operator unxml">|</span> www.musterlieferant.de
+        <span class="keyword operator unxml">|</span> HRB Nr. 372876
+        <span class="keyword operator unxml">|</span> Amtsgericht Musterstadt
+        <span class="keyword operator unxml">|</span> GLN 4304171000002
+      <span class="entity name tag unxml">SubjectCode</span> <span class="keyword operator assignment unxml">=</span> REG
+  <span class="entity name tag unxml">SupplyChainTradeTransaction</span>
+    <span class="entity name tag unxml">IncludedSupplyChainTradeLineItem</span>
+      <span class="entity name tag unxml">AssociatedDocumentLineDocument</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineID</span> <span class="keyword operator assignment unxml">=</span> 1
+      <span class="entity name tag unxml">SpecifiedTradeProduct</span>
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4123456000014
+        <span class="entity name tag unxml">SellerAssignedID</span> <span class="keyword operator assignment unxml">=</span> WA997
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> Wirkarbeit HT
+        <span class="entity name tag unxml">ApplicableProductCharacteristic</span>
+          <span class="entity name tag unxml">Description</span> <span class="keyword operator assignment unxml">=</span> Zählpunkt
+          <span class="entity name tag unxml">Value</span> <span class="keyword operator assignment unxml">=</span> DE0001346484600000000000000100038
+      <span class="entity name tag unxml">SpecifiedLineTradeAgreement</span>
+        <span class="entity name tag unxml">GrossPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0520
+        <span class="entity name tag unxml">NetPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0520
+      <span class="entity name tag unxml">SpecifiedLineTradeDelivery</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">BilledQuantity</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">unitCode</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>KWH<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 1000.0000
+      <span class="entity name tag unxml">SpecifiedLineTradeSettlement</span>
+        <span class="entity name tag unxml">ApplicableTradeTax</span>
+          <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+          <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+          <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+        <span class="entity name tag unxml">SpecifiedTradeSettlementLineMonetarySummation</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 52.00
+    <span class="entity name tag unxml">IncludedSupplyChainTradeLineItem</span>
+      <span class="entity name tag unxml">AssociatedDocumentLineDocument</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineID</span> <span class="keyword operator assignment unxml">=</span> 2
+      <span class="entity name tag unxml">SpecifiedTradeProduct</span>
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4123456000021
+        <span class="entity name tag unxml">SellerAssignedID</span> <span class="keyword operator assignment unxml">=</span> ÖST250
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> Ökosteuer Lieferant
+      <span class="entity name tag unxml">SpecifiedLineTradeAgreement</span>
+        <span class="entity name tag unxml">GrossPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0205
+        <span class="entity name tag unxml">NetPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0205
+      <span class="entity name tag unxml">SpecifiedLineTradeDelivery</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">BilledQuantity</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">unitCode</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>KWH<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 1000.0000
+      <span class="entity name tag unxml">SpecifiedLineTradeSettlement</span>
+        <span class="entity name tag unxml">ApplicableTradeTax</span>
+          <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+          <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+          <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+        <span class="entity name tag unxml">SpecifiedTradeSettlementLineMonetarySummation</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 20.50
+    <span class="entity name tag unxml">IncludedSupplyChainTradeLineItem</span>
+      <span class="entity name tag unxml">AssociatedDocumentLineDocument</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineID</span> <span class="keyword operator assignment unxml">=</span> 3
+      <span class="entity name tag unxml">SpecifiedTradeProduct</span>
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4260331811362
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> Kommissionierer 1250032 D. Muster
+        <span class="entity name tag unxml">Description</span> <span class="keyword operator assignment unxml">=</span> Besteller: Hr. Mayer, Personalnr. 4488
+      <span class="entity name tag unxml">SpecifiedLineTradeAgreement</span>
+        <span class="entity name tag unxml">GrossPriceProductTradePrice</span>
+          <span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 15.0000
+          <span class="entity name tag unxml">AppliedTradeAllowanceCharge</span>
+            <span class="entity name tag unxml">ChargeIndicator</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">Indicator</span> <span class="keyword operator assignment unxml">=</span> false
+            <span class="entity name tag unxml">ActualAmount</span> <span class="keyword operator assignment unxml">=</span> 4.50
+            <span class="entity name tag unxml">Reason</span> <span class="keyword operator assignment unxml">=</span> Artikelrabatt 1
+        <span class="entity name tag unxml">NetPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 10.5000
+      <span class="entity name tag unxml">SpecifiedLineTradeDelivery</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">BilledQuantity</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">unitCode</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>HUR<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 27.5000
+      <span class="entity name tag unxml">SpecifiedLineTradeSettlement</span>
+        <span class="entity name tag unxml">ApplicableTradeTax</span>
+          <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+          <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+          <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+        <span class="entity name tag unxml">SpecifiedTradeSettlementLineMonetarySummation</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 288.75
+    <span class="entity name tag unxml">IncludedSupplyChainTradeLineItem</span>
+      <span class="entity name tag unxml">AssociatedDocumentLineDocument</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineID</span> <span class="keyword operator assignment unxml">=</span> 4
+      <span class="entity name tag unxml">SpecifiedTradeProduct</span>
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 2001015001325
+        <span class="entity name tag unxml">SellerAssignedID</span> <span class="keyword operator assignment unxml">=</span> FB05
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> FALTENBEUTEL 16x6x28 CM
+      <span class="entity name tag unxml">SpecifiedLineTradeAgreement</span>
+        <span class="entity name tag unxml">GrossPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0105
+        <span class="entity name tag unxml">NetPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0105
+      <span class="entity name tag unxml">SpecifiedLineTradeDelivery</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">BilledQuantity</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">unitCode</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>H87<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 3500.0000
+      <span class="entity name tag unxml">SpecifiedLineTradeSettlement</span>
+        <span class="entity name tag unxml">ApplicableTradeTax</span>
+          <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+          <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+          <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+        <span class="entity name tag unxml">SpecifiedTradeSettlementLineMonetarySummation</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 36.75
+    <span class="entity name tag unxml">IncludedSupplyChainTradeLineItem</span>
+      <span class="entity name tag unxml">AssociatedDocumentLineDocument</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineID</span> <span class="keyword operator assignment unxml">=</span> 5
+      <span class="entity name tag unxml">SpecifiedTradeProduct</span>
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4123456000038
+        <span class="entity name tag unxml">SellerAssignedID</span> <span class="keyword operator assignment unxml">=</span> KOP05
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> Kopierpapier A4
+        <span class="entity name tag unxml">Description</span> <span class="keyword operator assignment unxml">=</span> Zählerstand von-bis: 543210 - 544420
+        <span class="entity name tag unxml">ApplicableProductCharacteristic</span>
+          <span class="entity name tag unxml">Description</span> <span class="keyword operator assignment unxml">=</span> Zähler-Nr.
+          <span class="entity name tag unxml">Value</span> <span class="keyword operator assignment unxml">=</span> MG-X79318
+      <span class="entity name tag unxml">SpecifiedLineTradeAgreement</span>
+        <span class="entity name tag unxml">GrossPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0100
+        <span class="entity name tag unxml">NetPriceProductTradePrice</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ChargeAmount</span> <span class="keyword operator assignment unxml">=</span> 0.0100
+      <span class="entity name tag unxml">SpecifiedLineTradeDelivery</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">BilledQuantity</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">unitCode</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>H87<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 1210.0000
+      <span class="entity name tag unxml">SpecifiedLineTradeSettlement</span>
+        <span class="entity name tag unxml">ApplicableTradeTax</span>
+          <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+          <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+          <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+        <span class="entity name tag unxml">SpecifiedTradeSettlementLineMonetarySummation</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">LineTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 12.10
+    <span class="entity name tag unxml">ApplicableHeaderTradeAgreement</span>
+      <span class="entity name tag unxml">SellerTradeParty</span>
+        <span class="entity name tag unxml">ID</span> <span class="keyword operator assignment unxml">=</span> 549910
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4333741000005
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> MUSTERLIEFERANT GMBH
+        <span class="entity name tag unxml">DefinedTradeContact</span>
+          <span class="entity name tag unxml">TelephoneUniversalCommunication</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">CompleteNumber</span> <span class="keyword operator assignment unxml">=</span> +49 932 431 500
+          <span class="entity name tag unxml">EmailURIUniversalCommunication</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">URIID</span> <span class="keyword operator assignment unxml">=</span> max.mustermann@musterlieferant.de
+        <span class="entity name tag unxml">PostalTradeAddress</span>
+          <span class="entity name tag unxml">PostcodeCode</span> <span class="keyword operator assignment unxml">=</span> 99199
+          <span class="entity name tag unxml">LineOne</span> <span class="keyword operator assignment unxml">=</span> BAHNHOFSTRASSE 99
+          <span class="entity name tag unxml">CityName</span> <span class="keyword operator assignment unxml">=</span> MUSTERHAUSEN
+          <span class="entity name tag unxml">CountryID</span> <span class="keyword operator assignment unxml">=</span> DE
+        <span class="entity name tag unxml">SpecifiedTaxRegistration</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">ID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>FC<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 201/113/40209
+      <span class="entity name tag unxml">BuyerTradeParty</span>
+        <span class="entity name tag unxml">ID</span> <span class="keyword operator assignment unxml">=</span> 339420
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4304171000002
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> MUSTER-KUNDE GMBH
+        <span class="entity name tag unxml">PostalTradeAddress</span>
+          <span class="entity name tag unxml">PostcodeCode</span> <span class="keyword operator assignment unxml">=</span> 40235
+          <span class="entity name tag unxml">LineOne</span> <span class="keyword operator assignment unxml">=</span> KUNDENWEG 88
+          <span class="entity name tag unxml">CityName</span> <span class="keyword operator assignment unxml">=</span> DUESSELDORF
+          <span class="entity name tag unxml">CountryID</span> <span class="keyword operator assignment unxml">=</span> DE
+      <span class="entity name tag unxml">AdditionalReferencedDocument</span>
+        <span class="entity name tag unxml">IssuerAssignedID</span> <span class="keyword operator assignment unxml">=</span> A777123
+        <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> 130
+    <span class="entity name tag unxml">ApplicableHeaderTradeDelivery</span>
+      <span class="entity name tag unxml">ShipToTradeParty</span>
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4304171088093
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> MUSTER-MARKT
+        <span class="entity name tag unxml">DefinedTradeContact</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">DepartmentName</span> <span class="keyword operator assignment unxml">=</span> 7322
+        <span class="entity name tag unxml">PostalTradeAddress</span>
+          <span class="entity name tag unxml">PostcodeCode</span> <span class="keyword operator assignment unxml">=</span> 31157
+          <span class="entity name tag unxml">LineOne</span> <span class="keyword operator assignment unxml">=</span> HAUPTSTRASSE 44
+          <span class="entity name tag unxml">CityName</span> <span class="keyword operator assignment unxml">=</span> SARSTEDT
+          <span class="entity name tag unxml">CountryID</span> <span class="keyword operator assignment unxml">=</span> DE
+      <span class="entity name tag unxml">ActualDeliverySupplyChainEvent</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">OccurrenceDateTime</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">DateTimeString</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">format</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>102<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 20241030
+      <span class="entity name tag unxml">DeliveryNoteReferencedDocument</span>
+        <span class="entity name tag unxml">IssuerAssignedID</span> <span class="keyword operator assignment unxml">=</span> L87654321012
+        <span class="entity name tag unxml">FormattedIssueDateTime</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">DateTimeString</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">format</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>102<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 20241031
+    <span class="entity name tag unxml">ApplicableHeaderTradeSettlement</span>
+      <span class="entity name tag unxml">InvoiceCurrencyCode</span> <span class="keyword operator assignment unxml">=</span> EUR
+      <span class="entity name tag unxml">InvoiceeTradeParty</span>
+        <span class="entity name tag unxml">ID</span> <span class="keyword operator assignment unxml">=</span> 339420
+        <span class="entity name tag unxml">GlobalID</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">schemeID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>0088<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 4304171000002
+        <span class="entity name tag unxml">Name</span> <span class="keyword operator assignment unxml">=</span> MUSTER-KUNDE GMBH
+        <span class="entity name tag unxml">PostalTradeAddress</span>
+          <span class="entity name tag unxml">PostcodeCode</span> <span class="keyword operator assignment unxml">=</span> 40235
+          <span class="entity name tag unxml">LineOne</span> <span class="keyword operator assignment unxml">=</span> KUNDENWEG 88
+          <span class="entity name tag unxml">CityName</span> <span class="keyword operator assignment unxml">=</span> DUESSELDORF
+          <span class="entity name tag unxml">CountryID</span> <span class="keyword operator assignment unxml">=</span> DE
+      <span class="entity name tag unxml">ApplicableTradeTax</span>
+        <span class="entity name tag unxml">CalculatedAmount</span> <span class="keyword operator assignment unxml">=</span> 76.67
+        <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+        <span class="entity name tag unxml">BasisAmount</span> <span class="keyword operator assignment unxml">=</span> 403.55
+        <span class="entity name tag unxml">LineTotalBasisAmount</span> <span class="keyword operator assignment unxml">=</span> 410.10
+        <span class="entity name tag unxml">AllowanceChargeBasisAmount</span> <span class="keyword operator assignment unxml">=</span> -6.55
+        <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+        <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+      <span class="entity name tag unxml">SpecifiedTradeAllowanceCharge</span>
+        <span class="entity name tag unxml">ChargeIndicator</span><span class="punctuation separator path unxml">/</span><span class="entity name tag unxml">Indicator</span> <span class="keyword operator assignment unxml">=</span> false
+        <span class="entity name tag unxml">BasisAmount</span> <span class="keyword operator assignment unxml">=</span> 410.10
+        <span class="entity name tag unxml">ActualAmount</span> <span class="keyword operator assignment unxml">=</span> 21.55
+        <span class="entity name tag unxml">Reason</span> <span class="keyword operator assignment unxml">=</span> Sonderrabatt
+        <span class="entity name tag unxml">CategoryTradeTax</span>
+          <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+          <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+          <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+      <span class="entity name tag unxml">SpecifiedLogisticsServiceCharge</span>
+        <span class="entity name tag unxml">Description</span> <span class="keyword operator assignment unxml">=</span> Transportkosten: Frachbetrag
+        <span class="entity name tag unxml">AppliedAmount</span> <span class="keyword operator assignment unxml">=</span> 15.00
+        <span class="entity name tag unxml">AppliedTradeTax</span>
+          <span class="entity name tag unxml">TypeCode</span> <span class="keyword operator assignment unxml">=</span> VAT
+          <span class="entity name tag unxml">CategoryCode</span> <span class="keyword operator assignment unxml">=</span> S
+          <span class="entity name tag unxml">RateApplicablePercent</span> <span class="keyword operator assignment unxml">=</span> 19.00
+      <span class="entity name tag unxml">SpecifiedTradePaymentTerms</span>
+        <span class="entity name tag unxml">Description</span> <span class="keyword operator assignment unxml">=</span> Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum
+        <span class="entity name tag unxml">ApplicableTradePaymentDiscountTerms</span>
+          <span class="entity name tag unxml">BasisPeriodMeasure</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">unitCode</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>DAY<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 10
+          <span class="entity name tag unxml">CalculationPercent</span> <span class="keyword operator assignment unxml">=</span> 2.00
+      <span class="entity name tag unxml">SpecifiedTradeSettlementHeaderMonetarySummation</span>
+        <span class="entity name tag unxml">LineTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 410.10
+        <span class="entity name tag unxml">ChargeTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 15.00
+        <span class="entity name tag unxml">AllowanceTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 21.55
+        <span class="entity name tag unxml">TaxBasisTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 403.55
+        <span class="entity name tag unxml">TaxTotalAmount</span><span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">currencyID</span><span class="keyword operator assignment unxml">=</span><span class="string quoted double unxml"><span class="punctuation definition string begin unxml">&quot;</span>EUR<span class="punctuation definition string end unxml">&quot;</span></span><span class="punctuation section parens end unxml">)</span> <span class="keyword operator assignment unxml">=</span> 76.67
+        <span class="entity name tag unxml">GrandTotalAmount</span> <span class="keyword operator assignment unxml">=</span> 480.22
+        <span class="entity name tag unxml">TotalPrepaidAmount</span> <span class="keyword operator assignment unxml">=</span> 0.00
+        <span class="entity name tag unxml">DuePayableAmount</span> <span class="keyword operator assignment unxml">=</span> 480.22
 </span></pre>
 </body>
 </html>

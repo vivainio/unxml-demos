@@ -8,111 +8,111 @@
 </head>
 <body>
 <a class="unxml-back" href="../../">← all demos</a>
-<pre class="unxml"><span class="ansi2html-content"><span class="ansi38-242">// Library:           OASIS Universal Business Language (UBL) 2.1 OS</span>
-<span class="ansi38-242">// http://docs.oasis-open.org/ubl/os-UBL-2.1/</span>
-<span class="ansi38-242">// Release Date:      04 November 2013</span>
-<span class="ansi38-242">// Module:            UBL-CommonExtensionComponents-2.1.xsd</span>
-<span class="ansi38-242">// Generated on:      2013-04-20 18:40(UTC)</span>
-<span class="ansi38-242">// Copyright (c) OASIS Open 2013. All Rights Reserved.</span>
-<span class="ansi38-203">schema</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2 </span><span class="ansi38-231">(</span><span class="ansi38-149">elementFormDefault</span><span class="ansi38-203">=</span><span class="ansi38-141">qualified</span><span class="ansi38-231">)</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">xmlns</span><span class="ansi38-231"> </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> cbc </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">ns</span><span class="ansi38-231"> udt </span><span class="ansi38-203">=</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2</span>
-<span class="ansi38-242">  // ===== Imports =====</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">import</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2 </span><span class="ansi38-203">from</span><span class="ansi38-231"> </span><span class="ansi38-81">UBL-UnqualifiedDataTypes-2.1.xsd</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">import</span><span class="ansi38-231"> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2 </span><span class="ansi38-203">from</span><span class="ansi38-231"> </span><span class="ansi38-81">UBL-CommonBasicComponents-2.1.xsd</span>
-<span class="ansi38-242">  // ===== Includes =====</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">include</span><span class="ansi38-231"> UBL-ExtensionContentDataType-2.1.xsd</span>
-<span class="ansi38-242">  // ===== Aggregate Element and Type Declarations =====</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> UBLExtensions </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">UBLExtensionsType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> UBLExtensionsType</span>
-<span class="ansi38-242">    // A container for all extensions present in the document.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">UBLExtension</span><span class="ansi38-231"> </span><span class="ansi38-203">+</span>
-<span class="ansi38-242">      // A single extension for private use.</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> UBLExtension </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">UBLExtensionType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> UBLExtensionType</span>
-<span class="ansi38-242">    // A single extension for private use.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">cbc:ID</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // An identifier for the Extension assigned by the creator of the extension.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">cbc:Name</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // A name for the Extension assigned by the creator of the extension.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyID</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // An agency that maintains one or more Extensions.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyName</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // The name of the agency that maintains the Extension.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionVersionID</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // The version of the Extension.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyURI</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // A URI for the Agency that maintains the Extension.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionURI</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // A URI for the Extension.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReasonCode</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // A code for reason the Extension is being included.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReason</span><span class="ansi38-231"> </span><span class="ansi38-203">?</span>
-<span class="ansi38-242">      // A description of the reason for the Extension.</span>
-<span class="ansi38-231">    </span><span class="ansi38-203">ref</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionContent</span>
-<span class="ansi38-242">      // The definition of the extension content.</span>
-<span class="ansi38-242">  // ===== Basic Element and Type Declarations =====</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionAgencyID </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyIDType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionAgencyName </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyNameType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionAgencyURI </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionAgencyURIType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionContent </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionContentType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionReason </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReasonType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionReasonCode </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionReasonCodeType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionURI </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionURIType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">element</span><span class="ansi38-231"> ExtensionVersionID </span><span class="ansi38-231">:</span><span class="ansi38-231"> </span><span class="ansi38-81">ExtensionVersionIDType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionAgencyIDType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionAgencyNameType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:TextType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionAgencyURIType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionReasonType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:TextType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionReasonCodeType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:CodeType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionURIType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
-<span class="ansi38-231">  </span><span class="ansi38-203">type</span><span class="ansi38-231"> ExtensionVersionIDType </span><span class="ansi38-203">extends</span><span class="ansi38-231"> </span><span class="ansi38-81">udt:IdentifierType</span>
-<span class="ansi38-242">// ===== Copyright Notice =====</span>
-<span class="ansi38-242">// OASIS takes no position regarding the validity or scope of any</span>
-<span class="ansi38-242">// intellectual property or other rights that might be claimed to pertain</span>
-<span class="ansi38-242">// to the implementation or use of the technology described in this</span>
-<span class="ansi38-242">// document or the extent to which any license under such rights</span>
-<span class="ansi38-242">// might or might not be available; neither does it represent that it has</span>
-<span class="ansi38-242">// made any effort to identify any such rights. Information on OASIS's</span>
-<span class="ansi38-242">// procedures with respect to rights in OASIS specifications can be</span>
-<span class="ansi38-242">// found at the OASIS website. Copies of claims of rights made</span>
-<span class="ansi38-242">// available for publication and any assurances of licenses to be made</span>
-<span class="ansi38-242">// available, or the result of an attempt made to obtain a general</span>
-<span class="ansi38-242">// license or permission for the use of such proprietary rights by</span>
-<span class="ansi38-242">// implementors or users of this specification, can be obtained from</span>
-<span class="ansi38-242">// the OASIS Executive Director.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// OASIS invites any interested party to bring to its attention any</span>
-<span class="ansi38-242">// copyrights, patents or patent applications, or other proprietary</span>
-<span class="ansi38-242">// rights which may cover technology that may be required to</span>
-<span class="ansi38-242">// implement this specification. Please address the information to the</span>
-<span class="ansi38-242">// OASIS Executive Director.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// This document and translations of it may be copied and furnished to</span>
-<span class="ansi38-242">// others, and derivative works that comment on or otherwise explain</span>
-<span class="ansi38-242">// it or assist in its implementation may be prepared, copied,</span>
-<span class="ansi38-242">// published and distributed, in whole or in part, without restriction of</span>
-<span class="ansi38-242">// any kind, provided that the above copyright notice and this</span>
-<span class="ansi38-242">// paragraph are included on all such copies and derivative works.</span>
-<span class="ansi38-242">// However, this document itself may not be modified in any way,</span>
-<span class="ansi38-242">// such as by removing the copyright notice or references to OASIS,</span>
-<span class="ansi38-242">// except as needed for the purpose of developing OASIS</span>
-<span class="ansi38-242">// specifications, in which case the procedures for copyrights defined</span>
-<span class="ansi38-242">// in the OASIS Intellectual Property Rights document must be</span>
-<span class="ansi38-242">// followed, or as required to translate it into languages other than</span>
-<span class="ansi38-242">// English.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// The limited permissions granted above are perpetual and will not be</span>
-<span class="ansi38-242">// revoked by OASIS or its successors or assigns.</span>
-<span class="ansi38-242">//</span>
-<span class="ansi38-242">// This document and the information contained herein is provided on</span>
-<span class="ansi38-242">// an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES,</span>
-<span class="ansi38-242">// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY</span>
-<span class="ansi38-242">// WARRANTY THAT THE USE OF THE INFORMATION HEREIN</span>
-<span class="ansi38-242">// WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED</span>
-<span class="ansi38-242">// WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A</span>
-<span class="ansi38-242">// PARTICULAR PURPOSE.</span>
+<pre class="unxml"><span class="source unxml"><span class="comment line unxml">// Library:           OASIS Universal Business Language (UBL) 2.1 OS</span>
+<span class="comment line unxml">// http://docs.oasis-open.org/ubl/os-UBL-2.1/</span>
+<span class="comment line unxml">// Release Date:      04 November 2013</span>
+<span class="comment line unxml">// Module:            UBL-CommonExtensionComponents-2.1.xsd</span>
+<span class="comment line unxml">// Generated on:      2013-04-20 18:40(UTC)</span>
+<span class="comment line unxml">// Copyright (c) OASIS Open 2013. All Rights Reserved.</span>
+<span class="keyword control unxml">schema</span> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2 <span class="punctuation section parens begin unxml">(</span><span class="entity other attribute-name unxml">elementFormDefault</span><span class="keyword operator assignment unxml">=</span><span class="constant language boolean attribute unxml">qualified</span><span class="punctuation section parens end unxml">)</span>
+  <span class="entity name tag unxml">xmlns</span> <span class="keyword operator assignment unxml">=</span> urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2
+  <span class="keyword control unxml">ns</span> cbc <span class="keyword operator assignment unxml">=</span> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+  <span class="keyword control unxml">ns</span> udt <span class="keyword operator assignment unxml">=</span> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2
+<span class="comment line unxml">  // ===== Imports =====</span>
+  <span class="keyword control unxml">import</span> urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2 <span class="keyword control unxml">from</span> <span class="storage type unxml">UBL-UnqualifiedDataTypes-2.1.xsd</span>
+  <span class="keyword control unxml">import</span> urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2 <span class="keyword control unxml">from</span> <span class="storage type unxml">UBL-CommonBasicComponents-2.1.xsd</span>
+<span class="comment line unxml">  // ===== Includes =====</span>
+  <span class="entity name tag unxml">include</span> UBL-ExtensionContentDataType-2.1.xsd
+<span class="comment line unxml">  // ===== Aggregate Element and Type Declarations =====</span>
+  <span class="keyword control unxml">element</span> UBLExtensions <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">UBLExtensionsType</span>
+  <span class="keyword control unxml">type</span> UBLExtensionsType
+<span class="comment line unxml">    // A container for all extensions present in the document.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">UBLExtension</span> <span class="keyword operator cardinality unxml">+</span>
+<span class="comment line unxml">      // A single extension for private use.</span>
+  <span class="keyword control unxml">element</span> UBLExtension <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">UBLExtensionType</span>
+  <span class="keyword control unxml">type</span> UBLExtensionType
+<span class="comment line unxml">    // A single extension for private use.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">cbc:ID</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // An identifier for the Extension assigned by the creator of the extension.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">cbc:Name</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // A name for the Extension assigned by the creator of the extension.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionAgencyID</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // An agency that maintains one or more Extensions.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionAgencyName</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // The name of the agency that maintains the Extension.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionVersionID</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // The version of the Extension.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionAgencyURI</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // A URI for the Agency that maintains the Extension.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionURI</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // A URI for the Extension.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionReasonCode</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // A code for reason the Extension is being included.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionReason</span> <span class="keyword operator cardinality unxml">?</span>
+<span class="comment line unxml">      // A description of the reason for the Extension.</span>
+    <span class="keyword control unxml">ref</span> <span class="storage type unxml">ExtensionContent</span>
+<span class="comment line unxml">      // The definition of the extension content.</span>
+<span class="comment line unxml">  // ===== Basic Element and Type Declarations =====</span>
+  <span class="keyword control unxml">element</span> ExtensionAgencyID <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionAgencyIDType</span>
+  <span class="keyword control unxml">element</span> ExtensionAgencyName <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionAgencyNameType</span>
+  <span class="keyword control unxml">element</span> ExtensionAgencyURI <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionAgencyURIType</span>
+  <span class="keyword control unxml">element</span> ExtensionContent <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionContentType</span>
+  <span class="keyword control unxml">element</span> ExtensionReason <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionReasonType</span>
+  <span class="keyword control unxml">element</span> ExtensionReasonCode <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionReasonCodeType</span>
+  <span class="keyword control unxml">element</span> ExtensionURI <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionURIType</span>
+  <span class="keyword control unxml">element</span> ExtensionVersionID <span class="punctuation separator type unxml">:</span> <span class="storage type unxml">ExtensionVersionIDType</span>
+  <span class="keyword control unxml">type</span> ExtensionAgencyIDType <span class="keyword control unxml">extends</span> <span class="storage type unxml">udt:IdentifierType</span>
+  <span class="keyword control unxml">type</span> ExtensionAgencyNameType <span class="keyword control unxml">extends</span> <span class="storage type unxml">udt:TextType</span>
+  <span class="keyword control unxml">type</span> ExtensionAgencyURIType <span class="keyword control unxml">extends</span> <span class="storage type unxml">udt:IdentifierType</span>
+  <span class="keyword control unxml">type</span> ExtensionReasonType <span class="keyword control unxml">extends</span> <span class="storage type unxml">udt:TextType</span>
+  <span class="keyword control unxml">type</span> ExtensionReasonCodeType <span class="keyword control unxml">extends</span> <span class="storage type unxml">udt:CodeType</span>
+  <span class="keyword control unxml">type</span> ExtensionURIType <span class="keyword control unxml">extends</span> <span class="storage type unxml">udt:IdentifierType</span>
+  <span class="keyword control unxml">type</span> ExtensionVersionIDType <span class="keyword control unxml">extends</span> <span class="storage type unxml">udt:IdentifierType</span>
+<span class="comment line unxml">// ===== Copyright Notice =====</span>
+<span class="comment line unxml">// OASIS takes no position regarding the validity or scope of any</span>
+<span class="comment line unxml">// intellectual property or other rights that might be claimed to pertain</span>
+<span class="comment line unxml">// to the implementation or use of the technology described in this</span>
+<span class="comment line unxml">// document or the extent to which any license under such rights</span>
+<span class="comment line unxml">// might or might not be available; neither does it represent that it has</span>
+<span class="comment line unxml">// made any effort to identify any such rights. Information on OASIS&#39;s</span>
+<span class="comment line unxml">// procedures with respect to rights in OASIS specifications can be</span>
+<span class="comment line unxml">// found at the OASIS website. Copies of claims of rights made</span>
+<span class="comment line unxml">// available for publication and any assurances of licenses to be made</span>
+<span class="comment line unxml">// available, or the result of an attempt made to obtain a general</span>
+<span class="comment line unxml">// license or permission for the use of such proprietary rights by</span>
+<span class="comment line unxml">// implementors or users of this specification, can be obtained from</span>
+<span class="comment line unxml">// the OASIS Executive Director.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// OASIS invites any interested party to bring to its attention any</span>
+<span class="comment line unxml">// copyrights, patents or patent applications, or other proprietary</span>
+<span class="comment line unxml">// rights which may cover technology that may be required to</span>
+<span class="comment line unxml">// implement this specification. Please address the information to the</span>
+<span class="comment line unxml">// OASIS Executive Director.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// This document and translations of it may be copied and furnished to</span>
+<span class="comment line unxml">// others, and derivative works that comment on or otherwise explain</span>
+<span class="comment line unxml">// it or assist in its implementation may be prepared, copied,</span>
+<span class="comment line unxml">// published and distributed, in whole or in part, without restriction of</span>
+<span class="comment line unxml">// any kind, provided that the above copyright notice and this</span>
+<span class="comment line unxml">// paragraph are included on all such copies and derivative works.</span>
+<span class="comment line unxml">// However, this document itself may not be modified in any way,</span>
+<span class="comment line unxml">// such as by removing the copyright notice or references to OASIS,</span>
+<span class="comment line unxml">// except as needed for the purpose of developing OASIS</span>
+<span class="comment line unxml">// specifications, in which case the procedures for copyrights defined</span>
+<span class="comment line unxml">// in the OASIS Intellectual Property Rights document must be</span>
+<span class="comment line unxml">// followed, or as required to translate it into languages other than</span>
+<span class="comment line unxml">// English.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// The limited permissions granted above are perpetual and will not be</span>
+<span class="comment line unxml">// revoked by OASIS or its successors or assigns.</span>
+<span class="comment line unxml">//</span>
+<span class="comment line unxml">// This document and the information contained herein is provided on</span>
+<span class="comment line unxml">// an &quot;AS IS&quot; basis and OASIS DISCLAIMS ALL WARRANTIES,</span>
+<span class="comment line unxml">// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY</span>
+<span class="comment line unxml">// WARRANTY THAT THE USE OF THE INFORMATION HEREIN</span>
+<span class="comment line unxml">// WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED</span>
+<span class="comment line unxml">// WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A</span>
+<span class="comment line unxml">// PARTICULAR PURPOSE.</span>
 </span></pre>
 </body>
 </html>
