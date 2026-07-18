@@ -1,9 +1,10 @@
 # Vendored demo sources
 
 Small, self-contained sample documents rendered into the gallery, kept in this
-repo so the demo site doesn't depend on a third-party host for them. (Larger
-real-world demos are still fetched on demand from their canonical upstream URLs;
-see `demo/publish-to-demo-site.py` in the unxml-rs repo.)
+repo so the demo site doesn't depend on a third-party host for them. Larger
+real-world demos are vendored too, under `gallery/` (see `gallery/README.md`
+for provenance) — everything `scripts/generate-demos.py` renders lives in this
+repo, so the site builds offline from a plain `pip install unxml`.
 
 ## cii/
 
