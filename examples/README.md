@@ -23,3 +23,11 @@ Classic beginner XSLT stylesheets, adapted from the public
 - `cdcatalog-choose.xsl` — `choose` / `when` / `otherwise`
 - `cdcatalog-templates.xsl` — multiple `template`s driven by `apply-templates`
 - `breakfast-menu.xsl` — the literal-result-element stylesheet form
+
+## json/
+
+Self-contained JSON examples authored for this gallery:
+
+- `service-catalog.json` — uniform service records (rendered as a compact
+  table), primitive arrays, nested objects, heterogeneous records, and empty
+  containers

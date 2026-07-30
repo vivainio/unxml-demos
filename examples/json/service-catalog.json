@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-07-30T09:00:00Z",
+  "environments": ["development", "staging", "production"],
+  "services": [
+    {"name": "accounts", "team": "identity", "language": "Rust", "tier": 1, "healthy": true},
+    {"name": "catalog", "team": "commerce", "language": "Go", "tier": 1, "healthy": true},
+    {"name": "checkout", "team": "commerce", "language": "Kotlin", "tier": 1, "healthy": false},
+    {"name": "email", "team": "engagement", "language": "Python", "tier": 2, "healthy": true},
+    {"name": "recommendations", "team": "data, search", "language": "Python", "tier": 2, "healthy": true},
+    {"name": "web", "team": "experience", "language": "TypeScript", "tier": 1, "healthy": true}
+  ],
+  "deployment": {
+    "region": "eu-north-1",
+    "replicas": 3,
+    "strategy": "rolling"
+  },
+  "alerts": [
+    {"service": "checkout", "severity": "critical", "details": {"code": "PAYMENT_TIMEOUT", "count": 17}},
+    {"service": "catalog", "severity": "warning", "details": null}
+  ],
+  "metadata": {},
+  "retired": []
+}

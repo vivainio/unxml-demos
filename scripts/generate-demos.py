@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render vendored XML schemas / stylesheets to syntax-highlighted, full-page
+"""Render vendored XML/JSON documents to syntax-highlighted, full-page
 HTML for this Zensical demo site.
 
 Fully vendored: every source the DEMOS/INLINE_DEMOS/INLINE_COMPARE manifests
@@ -45,6 +45,9 @@ SITE_ROOT = SCRIPT_DIR.parent
 # prefixes. The vendored path is read directly (see examples/gallery/); the
 # upstream URL is kept only for the index's attribution link.
 DEMOS: list[tuple[str, str, str, str, str]] = [
+    ("json", "service-catalog", "JSON — Service catalog",
+     "examples/json/service-catalog.json",
+     "https://github.com/vivainio/unxml-demos/blob/main/examples/json/service-catalog.json"),
     ("auto", "ubl/invoice-example", "UBL — Invoice (instance)",
      "examples/gallery/ubl/invoice-example.xml",
      "https://docs.oasis-open.org/ubl/os-UBL-2.1/xml/UBL-Invoice-2.1-Example.xml"),
@@ -135,13 +138,14 @@ DEMOS: list[tuple[str, str, str, str, str]] = [
 ]
 # mode -> (subdir, index-section heading); SECTION_ORDER sets section order.
 MODE_CATEGORY = {
+    "json": ("json", "JSON"),
     "auto": ("xml", "XML documents"),
     "xsd": ("schemas", "Schemas"),
     "xslt": ("xslt", "XSLT"),
     "schematron": ("schematron", "Schematron"),
     "msbuild": ("msbuild", "MSBuild"),
 }
-SECTION_ORDER = ["XML documents", "Schemas", "XSLT", "Schematron", "MSBuild"]
+SECTION_ORDER = ["JSON", "XML documents", "Schemas", "XSLT", "Schematron", "MSBuild"]
 
 # Small, self-hosted samples rendered *inline* on the gallery page — source
 # beside output, so the transformation is visible at a glance without opening a
@@ -149,6 +153,7 @@ SECTION_ORDER = ["XML documents", "Schemas", "XSLT", "Schematron", "MSBuild"]
 # on a third-party host for them.
 # tuple: (section heading, unxml mode, title, repo-relative source path)
 INLINE_DEMOS: list[tuple[str, str, str, str]] = [
+    ("JSON", "json", "Uniform objects become a compact table", "examples/json/service-catalog.json"),
     ("Invoice basics", "auto", "CII / Factur-X — minimal invoice", "examples/cii/factur-x-basic.xml"),
     ("Folding boilerplate", "auto", "UBL — ext:UBLExtensions collapsed under --auto", "examples/ubl/invoice-with-extensions.xml"),
     ("XSLT basics", "xslt", "Build an HTML table with for-each", "examples/xslt/cdcatalog.xsl"),
@@ -156,7 +161,7 @@ INLINE_DEMOS: list[tuple[str, str, str, str]] = [
     ("XSLT basics", "xslt", "Named templates + apply-templates", "examples/xslt/cdcatalog-templates.xsl"),
     ("XSLT basics", "xslt", "Literal-result-element stylesheet", "examples/xslt/breakfast-menu.xsl"),
 ]
-INLINE_ORDER = ["Invoice basics", "Folding boilerplate", "XSLT basics"]
+INLINE_ORDER = ["JSON", "Invoice basics", "Folding boilerplate", "XSLT basics"]
 
 # Side-by-side comparisons of the SAME document rendered with two flag sets,
 # both through unxml — used to show what an opt-in flag buys. Unlike the
@@ -167,7 +172,7 @@ INLINE_COMPARE: list[tuple[str, str, str, list[str], list[str]]] = [
      "examples/cii/factur-x-basic.xml", ["--no-auto"], ["--auto"]),
 ]
 # Per-mode label for the left ("source") column of an inline side-by-side sample.
-SOURCE_LABEL = {"xslt": "XSLT source", "auto": "XML source"}
+SOURCE_LABEL = {"xslt": "XSLT source", "auto": "XML source", "json": "JSON source"}
 SITE_REPO_BLOB = "https://github.com/vivainio/unxml-demos/blob/main"
 
 # Floating "back" link for every standalone demo page. The rest of the page
@@ -240,7 +245,12 @@ def render_args(unxml_bin: str, flags: list[str], src: Path) -> str:
 
 def render(unxml_bin: str, mode: str, src: Path) -> str:
     """Run `unxml --<mode> src` and return the rendered .unxml text."""
-    return render_args(unxml_bin, [f"--{mode}"], src)
+    return render_args(unxml_bin, mode_flags(mode), src)
+
+
+def mode_flags(mode: str) -> list[str]:
+    """CLI flags for a manifest mode; JSON is selected by its file extension."""
+    return [] if mode == "json" else [f"--{mode}"]
 
 
 _PRE_RE = re.compile(r'<pre class="unxml">(.*)</pre>\n</body>', re.DOTALL)
@@ -336,7 +346,7 @@ def index_markdown(
         # side-by-side demos need.
         "---\nhide:\n  - toc\n---",
         "# Gallery",
-        "Real-world XML documents rendered with [`unxml`]"
+        "Real-world XML and JSON documents rendered with [`unxml`]"
         "(https://github.com/vivainio/unxml-rs), syntax-highlighted with the "
         "same grammar `unxml` ships for `bat`.",
     ]
@@ -357,7 +367,7 @@ def index_markdown(
             blocks.append(inline_section_html(samples))
     else:
         blocks.append(
-            "The **Original** and **Rendered** columns compare the source XML "
+            "The **Original** and **Rendered** columns compare the source "
             "against the `unxml` output (lines · bytes)."
         )
 
@@ -422,7 +432,7 @@ def main() -> int:
         src_bytes = src_path.read_bytes()
         src_lines = src_bytes.count(b"\n")
         text = render(unxml_bin, mode, src_path)
-        fragment = render_html(unxml_bin, [f"--{mode}"], src_path)
+        fragment = render_html(unxml_bin, mode_flags(mode), src_path)
         out_slug = f"{subdir}/{slug}"
         out_lines = text.count("\n")
         out_bytes = len(text.encode("utf-8"))
@@ -443,10 +453,11 @@ def main() -> int:
         src_text = src_path.read_text(encoding="utf-8")
         out_text = render(unxml_bin, mode, src_path)
         src_frag = compact_html(render_html(unxml_bin, ["--raw"], src_path))
-        out_frag = compact_html(render_html(unxml_bin, [f"--{mode}"], src_path))
+        out_frag = compact_html(render_html(unxml_bin, mode_flags(mode), src_path))
         inline_rendered.append((
             section, title, f"{SITE_REPO_BLOB}/{rel}",
-            SOURCE_LABEL.get(mode, "source"), src_frag, f"unxml --{mode}", out_frag,
+            SOURCE_LABEL.get(mode, "source"), src_frag,
+            "unxml" if mode == "json" else f"unxml --{mode}", out_frag,
             src_text.count("\n"), out_text.count("\n"),
         ))
         print(f"  inline + rendered {rel} "
