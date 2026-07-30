@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/person.schema.json",
+  "title": "Person",
+  "type": "object",
+  "required": ["id", "email", "username"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "username": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{2,31}$",
+      "minLength": 3,
+      "maxLength": 32
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "manager": {
+      "$ref": "#/$defs/PersonSummary"
+    }
+  },
+  "$defs": {
+    "PersonSummary": {
+      "type": "object",
+      "required": ["id", "username"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

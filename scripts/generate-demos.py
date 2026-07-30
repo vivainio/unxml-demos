@@ -163,6 +163,8 @@ SECTION_ORDER = ["JSON", "XML documents", "Schemas", "XSLT", "Schematron", "MSBu
 # tuple: (section heading, unxml mode, title, repo-relative source path)
 INLINE_DEMOS: list[tuple[str, str, str, str]] = [
     ("JSON", "json", "Uniform objects become a compact table", "examples/json/service-catalog.json"),
+    ("JSON", "json", "JSON Schema — required fields, types, refs, and regex", "examples/json/person.schema.json"),
+    ("JSON", "json", "OpenAPI — embedded schemas simplify in place", "examples/json/openapi-schema.json"),
     ("Invoice basics", "auto", "CII / Factur-X — minimal invoice", "examples/cii/factur-x-basic.xml"),
     ("Folding boilerplate", "auto", "UBL — ext:UBLExtensions collapsed under --auto", "examples/ubl/invoice-with-extensions.xml"),
     ("XSLT basics", "xslt", "Build an HTML table with for-each", "examples/xslt/cdcatalog.xsl"),
@@ -258,8 +260,8 @@ def render(unxml_bin: str, mode: str, src: Path) -> str:
 
 
 def mode_flags(mode: str) -> list[str]:
-    """CLI flags for a manifest mode; JSON is selected by its file extension."""
-    return [] if mode == "json" else [f"--{mode}"]
+    """CLI flags for a manifest mode; JSON demos include semantic detection."""
+    return ["--auto"] if mode == "json" else [f"--{mode}"]
 
 
 _PRE_RE = re.compile(r'<pre class="unxml">(.*)</pre>\n</body>', re.DOTALL)
