@@ -31,3 +31,7 @@ Self-contained JSON examples authored for this gallery:
 - `service-catalog.json` — uniform service records (rendered as a compact
   table), primitive arrays, nested objects, heterogeneous records, and empty
   containers
+
+Canonical, externally maintained JSON formats are vendored under
+`gallery/json/`: OpenAPI, JSON Schema, and GeoJSON. See that directory's
+README for exact provenance and licensing.
